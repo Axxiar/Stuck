@@ -55,8 +55,11 @@ public class Movements : MonoBehaviour
         _currentDir = Vector2.SmoothDamp(_currentDir, targetDir, ref _currentVelocity, moveSmoothness);
 
         // si saut
-        if (controller.isGrounded && Input.GetButtonDown("Jump"))
-            _velocityY = jumpHeight;
+        // if (controller.isGrounded && Input.GetButtonDown("Jump"))
+        if (controller.isGrounded)
+        {
+            _velocityY = Input.GetButton("Jump") ? jumpHeight : 0.0f;
+        }
         // sinon on chute
         else
             _velocityY += gravity * Time.deltaTime;
