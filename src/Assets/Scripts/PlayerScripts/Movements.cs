@@ -24,7 +24,7 @@ public class Movements : MonoBehaviour
 
     Vector2 _currentDir = Vector2.zero;
     Vector2 _currentVelocity = Vector2.zero;
-    float _velocityY = 0.0f;
+    private float _velocityY;
     float _currentSpeed;
     
     private void Start()
