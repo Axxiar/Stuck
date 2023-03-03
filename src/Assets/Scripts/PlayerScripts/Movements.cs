@@ -57,9 +57,7 @@ public class Movements : MonoBehaviour
         // si saut
         // if (controller.isGrounded && Input.GetButtonDown("Jump"))
         if (controller.isGrounded)
-        {
             _velocityY = Input.GetButton("Jump") ? jumpHeight : 0.0f;
-        }
         // sinon on chute
         else
             _velocityY += gravity * Time.deltaTime;
