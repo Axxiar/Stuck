@@ -7,12 +7,10 @@ public class Menus : MonoBehaviour
     public GameObject pauseMenuUI;
     public void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.P))
         {
-            print("hello");
             if (GameIsPaused)
             {
-                print("o");
                 ResumeGame();
             }
             else
