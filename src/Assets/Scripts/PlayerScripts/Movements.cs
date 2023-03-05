@@ -12,9 +12,9 @@ public class Movements : MonoBehaviour
     // Vitesse de marche
     public float walkSpeed = 7f;
     // Vitesse de course
-    public float runSpeed = 15f;
+    public float runSpeed = 12f;
     // Hauteur de saut
-    public float jumpHeight = 8f;
+    public float jumpHeight = 7f;
     // Gravité
     // Cette valeur DOIT être négative sinon le joueur "tombe" vers le ciel
     public float gravity = -19.62f;

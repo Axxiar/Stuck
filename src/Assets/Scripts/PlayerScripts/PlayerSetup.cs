@@ -5,7 +5,7 @@ using Mirror;
 public class PlayerSetup : NetworkBehaviour
 {
     [SerializeField] Behaviour[] componentsToDisable;
-    private Camera mainCamera;
+    private Camera sceneCamera;
     private void Start()
     {
         // si le joueur n'est pas celui du client,
@@ -19,13 +19,13 @@ public class PlayerSetup : NetworkBehaviour
         }
         else
         {
-            mainCamera = Camera.main;
-            if (mainCamera != null) mainCamera.gameObject.SetActive(false);
+            sceneCamera = Camera.main;
+            if (sceneCamera != null) sceneCamera.gameObject.SetActive(false);
         }
     }
 
     private void OnDisable()
     {
-        if (mainCamera != null) mainCamera.gameObject.SetActive(true);
+        if (sceneCamera != null) sceneCamera.gameObject.SetActive(true);
     }
 }
