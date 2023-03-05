@@ -21,8 +21,9 @@ public class MouseLook : MonoBehaviour
     
     void Start()
     {
+        // volontairement enlevé pour les test
         // On bloque le curseur (+rend invisible au passage)
-        Cursor.lockState = CursorLockMode.Locked;
+        // Cursor.lockState = CursorLockMode.Locked;
     }
 
     void Update()
