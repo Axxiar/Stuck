@@ -123,13 +123,13 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!43 &513417190
+--- !u!43 &633659204
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-5090
+  m_Name: pb_Mesh24396
   serializedVersion: 10
   m_SubMeshes: []
   m_Shapes:
@@ -1887,7 +1887,7 @@ Transform:
   m_GameObject: {fileID: 1207978293}
   m_LocalRotation: {x: 1.110223e-17, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 21.139, y: -0.02, z: -2.8675}
-  m_LocalScale: {x: 0.95302767, y: 0.36731, z: 0.991731}
+  m_LocalScale: {x: 0.5534751, y: 0.36731, z: 0.6517961}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -2406,11 +2406,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< HEAD
   m_Name: pb_Mesh24364
-=======
-  m_Name: pb_Mesh24098
->>>>>>> 5fe01089db1c291c397d85be0c1e5e9cf32236fc
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
