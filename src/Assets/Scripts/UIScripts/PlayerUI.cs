@@ -1,18 +1,26 @@
 using System;
 using UnityEngine;
+using Mirror;
 
-public class Menus : MonoBehaviour
+public class PlayerUI : NetworkBehaviour
 {
     public static bool GameIsPaused;
     public GameObject pauseMenuUI;
+    public GameObject hudUI;
+
+    private NetworkManager networkManager;
+
+    private void Start()
+    {
+        networkManager = NetworkManager.singleton;
+    }
+
     public void Update()
     {
         if (Input.GetKeyDown(KeyCode.P))
         {
             if (GameIsPaused)
-            {
                 ResumeGame();
-            }
             else
                 PauseGame();
         }
@@ -22,6 +30,8 @@ public class Menus : MonoBehaviour
     {
         //on cache le menu pause
         pauseMenuUI.SetActive(false);
+        //on affiche le HUD
+        hudUI.SetActive(true);
         //on defreeze le jeu
         Time.timeScale = 1f;
         //on bloque le curseur
@@ -33,6 +43,8 @@ public class Menus : MonoBehaviour
     {
         //on freeze le jeu
         Time.timeScale = 0f;
+        //on cache le HUD
+        hudUI.SetActive(false);
         //on affiche le menu pause
         pauseMenuUI.SetActive(true);
         //on débloque le curseur
@@ -42,7 +54,11 @@ public class Menus : MonoBehaviour
     }
     public void QuitGame()
     {
-        Debug.Log("quit!");
-        Application.Quit();
+        // ssi le joueur n'est pas l'hote on coupe le client
+        if (isClientOnly)
+            networkManager.StopClient();
+        // si c'est l'hote on coupe client + serveur
+        else
+            networkManager.StopHost();
     }
 }

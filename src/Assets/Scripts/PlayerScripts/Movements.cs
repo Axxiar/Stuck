@@ -34,6 +34,13 @@ public class Movements : MonoBehaviour
 
     void Update()
     {
+        // pour éviter que le joueur continue à bouger tout seul quand on ouvre un menu
+        if (PlayerUI.GameIsPaused)
+        {
+            controller.Move(Vector3.zero);
+            return;
+        }
+        
         // gestion des différentes vitesses de déplacement
         //fast
         if (Input.GetKey(KeyCode.LeftShift))

@@ -296,6 +296,7 @@ MonoBehaviour:
   - {fileID: 960091783057153972}
   - {fileID: 960091783057153970}
   - {fileID: 960091783057153971}
+  playerUIPrefab: {fileID: 3433715808206939683, guid: 5bf14d878177faf47995b31c181d28ff, type: 3}
 --- !u!114 &-7347552183901448456
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -358,7 +359,7 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0
   target: {fileID: 960091783057153973}
-  clientAuthority: 1
+  clientAuthority: 0
   syncPosition: 1
   syncRotation: 1
   syncScale: 0

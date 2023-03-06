@@ -1,4 +1,5 @@
 using System;
+
 using UnityEngine;
 
 public class MouseLook : MonoBehaviour
@@ -19,15 +20,20 @@ public class MouseLook : MonoBehaviour
     Vector2 _currentMouseDeltaVelocity = Vector2.zero;
 
     
-    // void Start()
-    // {
-    //     // volontairement enlevé pour les test
-    //     // On bloque le curseur (+rend invisible au passage)
-    //     // Cursor.lockState = CursorLockMode.Locked;
-    // }
+    void Start()
+    {
+        // On bloque le curseur (+rend invisible au passage)
+        Cursor.lockState = CursorLockMode.Locked;
+    }
 
     void Update()
     {
+        // pour éviter que la souris continue à bouger toute seule quand on ouvre un menu
+        if (PlayerUI.GameIsPaused)
+        {
+            playerBody.Rotate(Vector3.zero);
+            return;
+        }
         // Récup de la position de la souris
         Vector2 targetMouseDelta = new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
         

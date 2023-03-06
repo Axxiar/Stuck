@@ -1,19 +1,23 @@
 using System;
 using UnityEngine;
 using Mirror;
+using Unity.VisualScripting;
 
 public class NetworkSetup : NetworkBehaviour
+
 {
     [SerializeField] Behaviour[] componentsToDisable;
     private Camera sceneCamera;
+
+    [SerializeField] private GameObject playerUIPrefab;
+    private GameObject playerUIInstance;
+
     private void Start()
     {
         // si le joueur n'est pas celui du client,
         // on désactive les scripts de mouvements et autres
         if (!isLocalPlayer)
         {
-            Debug.Log("Not my client");
-            Debug.Log(this);
             for (int i = 0; i < componentsToDisable.Length; i++)
             {
                 componentsToDisable[i].enabled = false;
@@ -21,15 +25,22 @@ public class NetworkSetup : NetworkBehaviour
         }
         else
         {
-            Debug.Log("My client !");
-            Debug.Log(this);
+            // sinon, on lui desactive la camera principale
             sceneCamera = Camera.main;
             if (sceneCamera != null) sceneCamera.gameObject.SetActive(false);
+            
+            // création du UI du joueur (local uniquement)
+            playerUIInstance = Instantiate(playerUIPrefab);
         }
     }
 
+    // lorsque le joueur quitte la partie 
     private void OnDisable()
     {
+        // on enlève son playerUI
+        Destroy(playerUIInstance);
+        
+        // on lui remet la caméra principale
         if (sceneCamera != null) sceneCamera.gameObject.SetActive(true);
     }
 }
