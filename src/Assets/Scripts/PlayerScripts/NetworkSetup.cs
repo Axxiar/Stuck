@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using Mirror;
 
-public class PlayerSetup : NetworkBehaviour
+public class NetworkSetup : NetworkBehaviour
 {
     [SerializeField] Behaviour[] componentsToDisable;
     private Camera sceneCamera;
@@ -12,6 +12,8 @@ public class PlayerSetup : NetworkBehaviour
         // on désactive les scripts de mouvements et autres
         if (!isLocalPlayer)
         {
+            Debug.Log("Not my client");
+            Debug.Log(this);
             for (int i = 0; i < componentsToDisable.Length; i++)
             {
                 componentsToDisable[i].enabled = false;
@@ -19,6 +21,8 @@ public class PlayerSetup : NetworkBehaviour
         }
         else
         {
+            Debug.Log("My client !");
+            Debug.Log(this);
             sceneCamera = Camera.main;
             if (sceneCamera != null) sceneCamera.gameObject.SetActive(false);
         }

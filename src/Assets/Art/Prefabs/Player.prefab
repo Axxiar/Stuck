@@ -195,10 +195,11 @@ GameObject:
   - component: {fileID: 960091783704507622}
   - component: {fileID: 960091783704507623}
   - component: {fileID: 960091783704507625}
-  - component: {fileID: -7347552183901448456}
+  - component: {fileID: 7834960481568758211}
   - component: {fileID: -7756468257687343761}
-  - component: {fileID: -3062503406297125019}
-  - component: {fileID: 184709743189339943}
+  - component: {fileID: -7347552183901448456}
+  - component: {fileID: 2426522828825295725}
+  - component: {fileID: 3386679792516339763}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -234,7 +235,7 @@ CharacterController:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Height: 3
+  m_Height: 3.6
   m_Radius: 0.6
   m_SlopeLimit: 45
   m_StepOffset: 0.7
@@ -260,23 +261,21 @@ MonoBehaviour:
   jumpHeight: 7
   gravity: -19.62
   moveSmoothness: 0.1
---- !u!114 &-7347552183901448456
+--- !u!114 &7834960481568758211
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 960091783704507620}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b91ecbcc199f4492b9a91e820070131, type: 3}
+  m_Script: {fileID: 11500000, guid: e197e14116cfb36498cb7c7aa7daa1d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneId: 0
-  _assetId: 2103356959
-  serverOnly: 0
-  visible: 0
-  hasSpawned: 0
+  maxHealth: 100
+  health: 100
+  healthBar: {fileID: 0}
 --- !u!114 &-7756468257687343761
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -297,7 +296,24 @@ MonoBehaviour:
   - {fileID: 960091783057153972}
   - {fileID: 960091783057153970}
   - {fileID: 960091783057153971}
---- !u!114 &-3062503406297125019
+--- !u!114 &-7347552183901448456
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 960091783704507620}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b91ecbcc199f4492b9a91e820070131, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneId: 0
+  _assetId: 2103356959
+  serverOnly: 0
+  visible: 0
+  hasSpawned: 0
+--- !u!114 &2426522828825295725
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -314,7 +330,7 @@ MonoBehaviour:
   syncInterval: 0
   target: {fileID: 960091783704507622}
   clientAuthority: 0
-  syncPosition: 0
+  syncPosition: 1
   syncRotation: 1
   syncScale: 0
   showGizmos: 0
@@ -326,7 +342,7 @@ MonoBehaviour:
   compressRotation: 0
   positionPrecision: 0.01
   scalePrecision: 0.01
---- !u!114 &184709743189339943
+--- !u!114 &3386679792516339763
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -342,7 +358,7 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0
   target: {fileID: 960091783057153973}
-  clientAuthority: 0
+  clientAuthority: 1
   syncPosition: 1
   syncRotation: 1
   syncScale: 0

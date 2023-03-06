@@ -19,12 +19,12 @@ public class MouseLook : MonoBehaviour
     Vector2 _currentMouseDeltaVelocity = Vector2.zero;
 
     
-    void Start()
-    {
-        // volontairement enlevé pour les test
-        // On bloque le curseur (+rend invisible au passage)
-        // Cursor.lockState = CursorLockMode.Locked;
-    }
+    // void Start()
+    // {
+    //     // volontairement enlevé pour les test
+    //     // On bloque le curseur (+rend invisible au passage)
+    //     // Cursor.lockState = CursorLockMode.Locked;
+    // }
 
     void Update()
     {
