@@ -20,6 +20,7 @@ public class Whistle : MonoBehaviour
             int randomIndex = Random.Range(0, whistleClips.Length);
             audioSource.PlayOneShot(whistleClips[randomIndex]);
             currentWhistleCD = whistleCoolDown;
+            MonsterController.SetIsPlayerWhistling(true);
         }
 
         if (currentWhistleCD > 0)

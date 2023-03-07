@@ -6,6 +6,9 @@ public class MonsterController : MonoBehaviour
     public GameObject player;
  
     public MeleeWeapon meleeWeapon;
+    public float speed = 3.0f;
+    public float minDistance = 2.0f;
+    private static bool isPlayerWhistling = false;
  
     //Agent de Navigation
     NavMeshAgent navMeshAgent;
@@ -61,7 +64,8 @@ public class MonsterController : MonoBehaviour
     }
  
     private void Update()
-    {
+    {   
+        
  
         //si la créature est défaite
         //Elle ne peut rien faire d'autres
@@ -118,6 +122,11 @@ public class MonsterController : MonoBehaviour
  
  
  
+    }
+    //permet de detecter le sifflement 
+    public static void SetIsPlayerWhistling(bool value)
+    {
+        isPlayerWhistling = value;
     }
  
     //La créature attend
@@ -222,7 +231,7 @@ public class MonsterController : MonoBehaviour
  
         // navMeshAgent.remainingDistance = distance restante pour atteindre la cible (Player)
         // navMeshAgent.stoppingDistance = à quelle distance de la cible l'IA doit s'arrêter 
-        // (exemple 2 m pour le corps à sorps) 
+        // (exemple 2 m pour le corps à corps) 
         if (navMeshAgent.remainingDistance > navMeshAgent.stoppingDistance)
         {
  
@@ -244,15 +253,16 @@ public class MonsterController : MonoBehaviour
     //Cherche une cible
     private void FindingTarget()
     {
-        //Si le joueur est détecté
-        if (targetScanner.Detect(transform, player))
+        //Si le joueur est détecté (visuellement ou au sifflement)  
+        if (targetScanner.Detect(transform, player) || isPlayerWhistling)
         {
             currentTarget = player;
             timeLostTarget = 0;
+            SetIsPlayerWhistling(false);
             return;
         }
- 
-        //Si le joueur était détecté
+        
+    //Si le joueur était détecté
         //Calcule le temps avant d'abandonner
         if (currentTarget != null)
         {
@@ -312,5 +322,6 @@ public class MonsterController : MonoBehaviour
         animator.SetBool(WALK_STATE, false);
         animator.SetBool(ATTACK_STATE, false);
     }
+    
  
 }
