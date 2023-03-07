@@ -31,6 +31,8 @@ public class NetworkSetup : NetworkBehaviour
             
             // création du UI du joueur (local uniquement)
             playerUIInstance = Instantiate(playerUIPrefab);
+            HealthBar playerHB = playerUIInstance.GetComponentInChildren<HealthBar>();
+            GetComponentInChildren<Health>().SetHealthBar(playerHB);
         }
     }
 
