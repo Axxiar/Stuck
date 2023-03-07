@@ -36,7 +36,7 @@ public class NetworkSetup : NetworkBehaviour
         }
     }
 
-    // lorsque le joueur quitte la partie 
+    // lorsque le script est désactivé (=joueur quitte la partie)
     private void OnDisable()
     {
         // on enlève son playerUI
