@@ -14,7 +14,7 @@ public class TargetScanner //IMPORTANT ne dérive pas de MonoBehaviour
     [Range(0.0f, 360.0f)]
     public float detectionAngle = 270;
  
-    //Obsacle qui bloque le champ de vision
+    //Obstacle qui bloque le champ de vision
     public LayerMask obstacleLayerMask;
  
     public bool Detect(Transform detector, GameObject target)
