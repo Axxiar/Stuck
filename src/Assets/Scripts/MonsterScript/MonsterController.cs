@@ -6,19 +6,18 @@ using Random = UnityEngine.Random;
 public class MonsterController : MonoBehaviour
 {
  
-    public float speed = 3.0f;
+    public float speed = 10f;
     public float minDistance = 2.0f;
     
     private static bool isPlayerWhistling ;
     private GameObject[] targetsPlayers;
     //private bool istargetfound = false;
- 
+
     //Agent de Navigation
-    NavMeshAgent navMeshAgent;
- 
-    
- 
-    
+    public NavMeshAgent navMeshAgent;
+
+    public float range= 10f;
+
     //Mémorise l'action actuelle
     public string currentAction;
  
@@ -34,7 +33,7 @@ public class MonsterController : MonoBehaviour
     private float timeLostTarget = 0;
  
  
-    private void Awake()
+    private void Start()
     {
 
         //Référence NavMeshAgent
@@ -46,6 +45,17 @@ public class MonsterController : MonoBehaviour
  
     private void Update()
     {
+        if(navMeshAgent.remainingDistance <= navMeshAgent.stoppingDistance) //done with path
+        {
+            Vector3 point;
+            if (RandomPoint(navMeshAgent.transform.position, range, out point)) //pass in our centre point and radius of area
+            {
+                navMeshAgent.SetDestination(point);
+            }
+        }
+
+        
+        
         targetsPlayers = GameObject.FindGameObjectsWithTag("Player");
         if (targetsPlayers.Length >= 1)
         {
@@ -136,6 +146,22 @@ public class MonsterController : MonoBehaviour
         Vector3 direction = (target.position - transform.position).normalized;
         Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
         transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 3f);
+    }
+    private bool RandomPoint(Vector3 center, float range, out Vector3 result)
+    {
+
+        Vector3 randomPoint = center + Random.insideUnitSphere * range; //random point in a sphere 
+        NavMeshHit hit;
+        if (NavMesh.SamplePosition(randomPoint, out hit, 1.0f, NavMesh.AllAreas)) //documentation: https://docs.unity3d.com/ScriptReference/AI.NavMesh.SamplePosition.html
+        { 
+            //the 1.0f is the max distance from the random point to a point on the navmesh, might want to increase if range is big
+            //or add a for loop like in the documentation
+            result = hit.position;
+            return true;
+        }
+
+        result = Vector3.zero;
+        return false;
     }
     
  
