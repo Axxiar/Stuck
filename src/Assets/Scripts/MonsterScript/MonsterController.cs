@@ -35,28 +35,14 @@ public class MonsterController : MonoBehaviour
  
     private void Start()
     {
-
         //Référence NavMeshAgent
         navMeshAgent = GetComponent<NavMeshAgent>();
- 
-        //Référence de Player
-        //player = FindObjectOfType<Movements>().gameObject;
     }
  
     private void Update()
     {
-        if(navMeshAgent.remainingDistance <= navMeshAgent.stoppingDistance) //done with path
-        {
-            Vector3 point;
-            if (RandomPoint(navMeshAgent.transform.position, range, out point)) //pass in our centre point and radius of area
-            {
-                navMeshAgent.SetDestination(point);
-            }
-        }
-
-        
-        
         targetsPlayers = GameObject.FindGameObjectsWithTag("Player");
+     
         if (targetsPlayers.Length >= 1)
         {
             // cible choisie au hazard, à changer.
@@ -68,16 +54,18 @@ public class MonsterController : MonoBehaviour
             //Si pas de cible, ne fait rien
             if (currentTarget == null)
             {
-                navMeshAgent.ResetPath();
-                return;   
+                if(navMeshAgent.remainingDistance <= navMeshAgent.stoppingDistance) //done with path
+                {
+                    Vector3 point;
+                    if (RandomPoint(navMeshAgent.transform.position, range, out point)) //pass in our centre point and radius of area
+                    {
+                        navMeshAgent.SetDestination(point);
+                    }
+                }
             }
-
-
-            //Est-ce que l'IA se déplace vers le joueur ?
-            if (MovingToTarget(randomPlayer))
+            else
             {
-                //En train de marcher
-
+                MovingToTarget(randomPlayer);
             }
         }
         
