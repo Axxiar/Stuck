@@ -85,13 +85,36 @@ nav .container .title a {
 }
 
 footer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-around;
+  text-align: center;
   background-color: #4a0000;
   padding: 4vh 3vw;
   font-family: "Segoe UI", Tahoma, Verdana, sans-serif;
+}
+footer svg {
+  padding: 5px;
+  border: 0px solid white;
+  border-radius: 50%;
+  transition: border 0.06s ease-in-out;
+}
+footer svg:hover {
+  border: 2px solid white;
+}
+footer .link-to-about {
+  text-decoration: none;
+  position: relative;
+}
+footer .link-to-about::after {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 0%;
+  height: 1px;
+  left: -2px;
+  background-color: white;
+  transition: width 0.3s;
+}
+footer .link-to-about:hover::after {
+  width: 100%;
 }
 
 article {
@@ -114,7 +137,7 @@ article {
   position: relative;
   width: 160px;
   height: 50px;
-  border: 2px solid #ac0000;
+  border: 3px solid #ac0000;
   border-radius: 5px;
   font-size: 20px;
   font-family: "Segoe UI", Tahoma, Verdana, sans-serif;
@@ -135,7 +158,7 @@ article {
   z-index: -1;
   transition: 0.3s ease;
 }
-.dl-button:hover::before, .dl-button:focus::before {
+.dl-button:hover::before {
   width: 100%;
 }
 .dl-button:hover {
@@ -148,6 +171,18 @@ article {
 .dl-button img {
   width: 30px;
   height: 30px;
+}
+
+.card-grid {
+  display: flex;
+  justify-content: space-around;
+  background-color: aquamarine;
+}
+
+.card {
+  width: 20%;
+  height: 200px;
+  background-color: yellow;
 }
 
 /*# sourceMappingURL=style.css.map */

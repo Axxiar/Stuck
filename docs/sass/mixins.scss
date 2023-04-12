@@ -2,7 +2,7 @@
     position: relative;
     width: 160px;
     height: 50px;
-    border: 2px solid #ac0000;
+    border: 3px solid #ac0000;
     border-radius: 5px;
     font-size: 20px;
     font-family: 'Segoe UI', Tahoma, Verdana, sans-serif;
@@ -24,7 +24,7 @@
         transition: .3s ease;
     }
 
-    &:hover::before, &:focus::before {
+    &:hover::before {
         width: 100%;
     }
 
@@ -41,4 +41,11 @@
         width: 30px;
         height: 30px;
     }
+}
+
+
+@mixin card {
+    width: 20%;
+    height: 200px;
+    background-color: yellow;
 }

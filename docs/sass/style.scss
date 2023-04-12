@@ -36,10 +36,14 @@ $main-color: #4a0000;
 @import "footbar.scss";
 @import "mixins.scss";
 
+// -- index.html -- 
+
 article {
     padding: 10rem;
 }
 
+
+// -- download.html --
 
 .dl-image {
     display: flex;
@@ -57,3 +61,15 @@ article {
     @include big-button;
 }
 
+
+// -- about.html --
+
+.card-grid {
+    display: flex;
+    justify-content: space-around;
+    background-color: aquamarine
+}
+
+.card {
+    @include card;
+}
