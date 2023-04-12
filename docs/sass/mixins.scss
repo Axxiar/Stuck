@@ -1,0 +1,44 @@
+@mixin big-button {
+    position: relative;
+    width: 160px;
+    height: 50px;
+    border: 2px solid #ac0000;
+    border-radius: 5px;
+    font-size: 20px;
+    font-family: 'Segoe UI', Tahoma, Verdana, sans-serif;
+    font-weight: bold;
+    background-color: #ac0000;
+    color: white;
+    z-index: 1;
+
+    &::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        border-radius: 5px;
+        width: 0;
+        height: 100%;
+        background-color: #4a0000;
+        z-index: -1;
+        transition: .3s ease;
+    }
+
+    &:hover::before, &:focus::before {
+        width: 100%;
+    }
+
+    &:hover {
+        cursor: pointer;
+    }
+
+    .container {
+        display: flex;
+        justify-content: space-evenly;
+    }
+
+    img {
+        width: 30px;
+        height: 30px;
+    }
+}

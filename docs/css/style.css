@@ -1,0 +1,153 @@
+@font-face {
+  font-family: "Restless";
+  src: url("../assets/restless-soul-bb.regular.otf");
+}
+* {
+  margin: 0;
+  padding: 0;
+  color: white;
+}
+
+html {
+  background: linear-gradient(345deg, rgb(19, 0, 0) 0%, rgb(62, 21, 21) 100%) no-repeat;
+  background-attachment: fixed;
+}
+html ::-webkit-scrollbar {
+  width: 10px;
+}
+html ::-webkit-scrollbar-thumb {
+  background: rgba(243, 229, 229, 0.784);
+  border-radius: 7px;
+}
+html ::-webkit-scrollbar-thumb:hover {
+  background: rgba(154, 144, 144, 0.784);
+  border-radius: 2px;
+}
+html ::-webkit-scrollbar-track {
+  background: rgb(22, 22, 22);
+}
+
+nav {
+  background-color: #4a0000;
+  padding: 3vh 3vw;
+  transform: translate3d(0, -100px, 0);
+  box-shadow: 0 4px 20px rgb(44, 16, 16);
+}
+nav .container {
+  display: flex;
+  justify-content: space-between;
+}
+nav .container .pages {
+  padding: 3vh 2vw;
+}
+nav .container .pages ul {
+  display: flex;
+  list-style: none;
+}
+nav .container .pages ul li {
+  padding: 10px 1.5vw;
+}
+nav .container .pages a {
+  text-decoration: none;
+  font-family: "Segoe UI", Tahoma, Verdana, sans-serif;
+  font-size: large;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.75);
+  transition: color 0.2s ease-out;
+}
+nav .container .pages a:hover, nav .container .pages a.current {
+  color: white;
+}
+nav .container .pages a.current {
+  font-weight: 800;
+}
+nav .container .title {
+  display: flex;
+  align-items: center;
+  padding: 0 5vw 0 1vw;
+}
+nav .container .title img {
+  width: 70px;
+  height: 70px;
+  border-radius: 15px;
+  margin-right: 25px;
+  vertical-align: middle;
+  transition: margin-right 0.2s;
+}
+nav .container .title img:hover {
+  margin-right: 0px;
+}
+nav .container .title a {
+  font-family: Restless;
+  font-size: 35px;
+  text-decoration: none;
+  color: white;
+}
+
+footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  background-color: #4a0000;
+  padding: 4vh 3vw;
+  font-family: "Segoe UI", Tahoma, Verdana, sans-serif;
+}
+
+article {
+  padding: 10rem;
+}
+
+.dl-image {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: url("https://www.pngkey.com/png/detail/233-2332677_ega-png.png");
+  width: 80%;
+  max-width: 600px;
+  height: 500px;
+  margin: 50px auto;
+}
+
+.dl-button {
+  position: relative;
+  width: 160px;
+  height: 50px;
+  border: 2px solid #ac0000;
+  border-radius: 5px;
+  font-size: 20px;
+  font-family: "Segoe UI", Tahoma, Verdana, sans-serif;
+  font-weight: bold;
+  background-color: #ac0000;
+  color: white;
+  z-index: 1;
+}
+.dl-button::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  border-radius: 5px;
+  width: 0;
+  height: 100%;
+  background-color: #4a0000;
+  z-index: -1;
+  transition: 0.3s ease;
+}
+.dl-button:hover::before, .dl-button:focus::before {
+  width: 100%;
+}
+.dl-button:hover {
+  cursor: pointer;
+}
+.dl-button .container {
+  display: flex;
+  justify-content: space-evenly;
+}
+.dl-button img {
+  width: 30px;
+  height: 30px;
+}
+
+/*# sourceMappingURL=style.css.map */
