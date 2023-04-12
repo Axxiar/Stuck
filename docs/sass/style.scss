@@ -10,6 +10,7 @@
 }
 
 html {
+    font-family: 'Segoe UI', Tahoma, Verdana, sans-serif;
     background: linear-gradient(345deg, rgb(19, 0, 0) 0%, rgb(62, 21, 21) 100%) no-repeat;
     background-attachment: fixed;
     ::-webkit-scrollbar {
@@ -66,10 +67,22 @@ article {
 
 .card-grid {
     display: flex;
-    justify-content: space-around;
-    background-color: aquamarine
+    padding: 15px;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
 }
 
 .card {
     @include card;
+    margin: 10px;
+    flex-basis: 33%;
+    &:hover {
+        height: 215px;
+        flex-grow: .4;
+    }
+    
+    @media screen and (min-width: 1320px) {
+        flex-basis: 20%;
+        flex-grow: .2;
+    }
 }

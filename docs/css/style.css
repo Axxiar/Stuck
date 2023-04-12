@@ -9,6 +9,7 @@
 }
 
 html {
+  font-family: "Segoe UI", Tahoma, Verdana, sans-serif;
   background: linear-gradient(345deg, rgb(19, 0, 0) 0%, rgb(62, 21, 21) 100%) no-repeat;
   background-attachment: fixed;
 }
@@ -175,14 +176,52 @@ article {
 
 .card-grid {
   display: flex;
-  justify-content: space-around;
-  background-color: aquamarine;
+  padding: 15px;
+  flex-flow: row wrap;
+  justify-content: space-evenly;
 }
 
 .card {
-  width: 20%;
+  padding: 20px;
   height: 200px;
-  background-color: yellow;
+  max-width: 450px;
+  min-width: 300px;
+  background-color: rgba(0, 0, 0, 0.3921568627);
+  border-radius: 10px;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  margin: 10px;
+  flex-basis: 33%;
+}
+.card .profil {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.card img {
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+}
+@media screen and (max-width: 900px) {
+  .card img {
+    width: 70px;
+    height: 70px;
+  }
+}
+.card:hover {
+  height: 215px;
+  flex-grow: 0.4;
+}
+@media screen and (min-width: 1320px) {
+  .card {
+    flex-basis: 20%;
+    flex-grow: 0.2;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */

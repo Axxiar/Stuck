@@ -45,7 +45,35 @@
 
 
 @mixin card {
-    width: 20%;
+    padding: 20px;
     height: 200px;
-    background-color: yellow;
+    max-width: 450px;
+    min-width: 300px;
+    background-color: #00000064;
+    border-radius: 10px;
+    transition: all .3s ease;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+
+    .profil {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+        
+    }
+
+    img {
+        border-radius: 50%;
+        width: 100px;
+        height: 100px;
+        
+        @media screen and (max-width: 900px) {
+            width: 70px;
+            height: 70px;
+        }
+    }
 }
