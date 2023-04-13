@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.17352083, g: 0.21692048, b: 0.2990152, a: 1}
+  m_IndirectSpecularColor: {r: 0.1735206, g: 0.21692012, b: 0.2990144, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2012,6 +2012,63 @@ MonoBehaviour:
   m_SelectedFaces: 
   m_SelectedEdges: []
   m_SelectedVertices: 
+--- !u!1001 &243077969
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: b2bb3f6cc7b08b548aa4bb0555c524c1, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b2bb3f6cc7b08b548aa4bb0555c524c1, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 38.41507
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b2bb3f6cc7b08b548aa4bb0555c524c1, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.32425308
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b2bb3f6cc7b08b548aa4bb0555c524c1, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 26.716633
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b2bb3f6cc7b08b548aa4bb0555c524c1, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b2bb3f6cc7b08b548aa4bb0555c524c1, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b2bb3f6cc7b08b548aa4bb0555c524c1, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b2bb3f6cc7b08b548aa4bb0555c524c1, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b2bb3f6cc7b08b548aa4bb0555c524c1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b2bb3f6cc7b08b548aa4bb0555c524c1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b2bb3f6cc7b08b548aa4bb0555c524c1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b2bb3f6cc7b08b548aa4bb0555c524c1, type: 3}
+      propertyPath: m_Name
+      value: Colossiiiis
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b2bb3f6cc7b08b548aa4bb0555c524c1, type: 3}
 --- !u!1 &278137130
 GameObject:
   m_ObjectHideFlags: 0
@@ -2042,7 +2099,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!114 &278137132
 MonoBehaviour:
@@ -44546,7 +44603,7 @@ Transform:
   - {fileID: 780580782}
   - {fileID: 1232785913}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1109424313
 GameObject:
@@ -45220,7 +45277,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!43 &1462425509
 Mesh:
@@ -45556,7 +45613,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh26148
+  m_Name: pb_Mesh27272
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -45780,7 +45837,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!43 &1843066569
 Mesh:
@@ -48081,5 +48138,5 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 5.13, y: -74.056, z: 0}
