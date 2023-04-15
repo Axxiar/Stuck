@@ -5,7 +5,7 @@ using Random = UnityEngine.Random;
 
 public class MonsterController : MonoBehaviour
 {
- 
+    Animator _animator;
     public float speed = 10f;
     public float minDistance = 2.0f;
     
@@ -35,6 +35,7 @@ public class MonsterController : MonoBehaviour
  
     private void Start()
     {
+        
         //Référence NavMeshAgent
         navMeshAgent = GetComponent<NavMeshAgent>();
     }
@@ -64,7 +65,7 @@ public class MonsterController : MonoBehaviour
                 }
             }
             else
-            {
+            {   
                 MovingToTarget(randomPlayer);
             }
         }
@@ -75,6 +76,7 @@ public class MonsterController : MonoBehaviour
     public static void SetIsPlayerWhistling(bool value)
     {
         isPlayerWhistling = value;
+        
     }
     private bool MovingToTarget(GameObject player)
     {
@@ -93,6 +95,8 @@ public class MonsterController : MonoBehaviour
         return false;
         
     }
+
+   
  
     //Cherche une cible
     private void FindingTarget(GameObject player)
@@ -151,6 +155,6 @@ public class MonsterController : MonoBehaviour
         result = Vector3.zero;
         return false;
     }
-    
- 
+
+   
 }
