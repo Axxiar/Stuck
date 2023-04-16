@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,18 +6,31 @@ using UnityEngine;
 public class CameraRaycast : MonoBehaviour
 {
     public float viewRange;
-    
+
     RaycastHit hit;
-    Ray cubeRay;
+    Ray ray;
     void Update()
     {
-        cubeRay = new Ray(transform.position, transform.forward * -1);
-        Debug.DrawRay(transform.position, transform.forward * -viewRange, Color.red);
 
-        if (Physics.Raycast(cubeRay, out hit, viewRange) && hit.collider.CompareTag("Enemy"))
+
+        for (int j = -10; j < 10; j+=5)
         {
-            print(hit.collider.tag);
-            Debug.Log(hit.transform.name +" traverse le rayon");
+            for (int i = -20; i < 20; i+=3)
+            {
+                ray = new Ray(transform.position, transform.forward * viewRange + transform.right * i + transform.up * j);
+                Debug.DrawRay(transform.position, transform.forward * viewRange + transform.right * i + transform.up * j, Color.green);
+                if (Physics.Raycast(ray, out hit, viewRange) && hit.collider.CompareTag("Enemy"))
+                {
+                    print(hit.collider.tag);
+                    Debug.Log(hit.transform.name +" traverse le rayon" + $"{i}:{j}");
+                    return;
+                }
+            }
         }
+    
+        
     }
+
+
+    
 }

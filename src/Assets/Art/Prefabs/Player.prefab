@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 960091783057153970}
   - component: {fileID: 960091783057153971}
   - component: {fileID: 960091783057153972}
+  - component: {fileID: 4763920570038678550}
   m_Layer: 0
   m_Name: Player Camera
   m_TagString: Untagged
@@ -59,13 +60,13 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 60
+  field of view: 55
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 2147483647
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -101,6 +102,19 @@ MonoBehaviour:
   mouseYSensivity: 100
   mouseXSensivity: 50
   mouseSmoothness: 0
+--- !u!114 &4763920570038678550
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 960091783057153968}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b94eebfd456daf4a888d7fc13110ed8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  viewRange: 35
 --- !u!1 &960091783361447333
 GameObject:
   m_ObjectHideFlags: 0
@@ -551,30 +565,52 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -8391222552659086748, guid: 967f6cd912fe22f4d9fdf6563b1c1580, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: -8380157826906577798, guid: 967f6cd912fe22f4d9fdf6563b1c1580, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: -7029948723529949830, guid: 967f6cd912fe22f4d9fdf6563b1c1580, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: -6733177361254619370, guid: 967f6cd912fe22f4d9fdf6563b1c1580, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: -1018664272722485354, guid: 967f6cd912fe22f4d9fdf6563b1c1580, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: -516098083770646512, guid: 967f6cd912fe22f4d9fdf6563b1c1580, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 967f6cd912fe22f4d9fdf6563b1c1580, type: 3}
       propertyPath: m_Name
       value: camera
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 967f6cd912fe22f4d9fdf6563b1c1580, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3141101260113499581, guid: 967f6cd912fe22f4d9fdf6563b1c1580, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6824746026288583490, guid: 967f6cd912fe22f4d9fdf6563b1c1580, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8513859187771203891, guid: 967f6cd912fe22f4d9fdf6563b1c1580, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 967f6cd912fe22f4d9fdf6563b1c1580, type: 3}
---- !u!1 &7025575613966255823 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 967f6cd912fe22f4d9fdf6563b1c1580, type: 3}
-  m_PrefabInstance: {fileID: 7907953836975078302}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &2670336291252981754
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7025575613966255823}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0b94eebfd456daf4a888d7fc13110ed8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  viewRange: 50
 --- !u!4 &7652754176567106677 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 967f6cd912fe22f4d9fdf6563b1c1580, type: 3}
