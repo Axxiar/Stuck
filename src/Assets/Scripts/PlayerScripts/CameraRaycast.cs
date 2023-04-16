@@ -11,8 +11,6 @@ public class CameraRaycast : MonoBehaviour
     Ray ray;
     void Update()
     {
-
-
         for (int j = -10; j < 10; j+=5)
         {
             for (int i = -20; i < 20; i+=3)
@@ -27,10 +25,5 @@ public class CameraRaycast : MonoBehaviour
                 }
             }
         }
-    
-        
     }
-
-
-    
 }
