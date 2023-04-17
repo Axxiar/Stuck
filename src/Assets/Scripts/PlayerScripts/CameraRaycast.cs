@@ -1,17 +1,24 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CameraRaycast : MonoBehaviour
 {
     public float viewRange;
+    private GameObject camHUD;
 
     RaycastHit hit;
     Ray ray;
+
+    void Awake()
+    {
+        camHUD = FindObjectOfType<GameObject>(includeInactive:true);
+    }
+
     void Update()
     {
         Score.isFilming = false;
+        if (!PlayerUI.CanFilm) // CanFilm est true lorsque le joueur a activé la caméra (voir PlayerUI.cs)
+            return;
+
         for (int j = -10; j < 10; j+=5)
         {
             for (int i = -20; i < 20; i+=3)

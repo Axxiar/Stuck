@@ -5,6 +5,8 @@ using Mirror;
 public class PlayerUI : NetworkBehaviour
 {
     public static bool GameIsPaused;
+    public static bool CanFilm = false;
+    public Animator transitionAnimator;
     public GameObject pauseMenuUI;
     public GameObject hudUI;
     public GameObject camUI;
@@ -27,11 +29,15 @@ public class PlayerUI : NetworkBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.E))
         {
-            camUI.SetActive(!camUI.activeSelf);
-            hudUI.SetActive(!hudUI.activeSelf);
+            CanFilm = !CanFilm;
+            transitionAnimator.SetTrigger("Fade");
         }
     }
-    
+    public void SwitchToCamMod()
+    {
+        camUI.SetActive(!camUI.activeSelf);
+        hudUI.SetActive(!hudUI.activeSelf);
+    }
     public void ResumeGame()
     {
         //on cache le menu pause
@@ -54,12 +60,15 @@ public class PlayerUI : NetworkBehaviour
         //on affiche le menu pause
         pauseMenuUI.SetActive(true);
         //on débloque le curseur
-        Cursor.lockState = CursorLockMode.Confined;
+        Cursor.lockState = CursorLockMode.None;
 
         GameIsPaused = true;
     }
     public void QuitGame()
     {
+        Time.timeScale = 1f;
+        GameIsPaused = false;
+        Cursor.lockState = CursorLockMode.None;
         // ssi le joueur n'est pas l'hote on coupe le client
         if (isClientOnly)
             networkManager.StopClient();

@@ -35,6 +35,10 @@ public class NetworkSetup : NetworkBehaviour
             GetComponentInChildren<Health>().SetHealthBar(playerHB);
             StorageBar playerSB = playerUIInstance.GetComponentInChildren<StorageBar>(includeInactive:true);
             GetComponentInChildren<Score>().SetStorageBar(playerSB);
+            
+            Debug.Log(transform.name+" viens de se connecter");
+            Time.timeScale = 1f;
+            // GameIsPaused = false;
         }
     }
 
