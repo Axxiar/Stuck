@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 960091783057153971}
   - component: {fileID: 960091783057153972}
   - component: {fileID: 4763920570038678550}
+  - component: {fileID: 8612410948602251902}
   m_Layer: 0
   m_Name: Player Camera
   m_TagString: Untagged
@@ -114,7 +115,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b94eebfd456daf4a888d7fc13110ed8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  viewRange: 35
+  enemiesViewRange: 35
+  itemsViewRange: 6.5
+--- !u!114 &8612410948602251902
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 960091783057153968}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2d14902963e51544a398471c05ab320, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pickupRange: 4.7
+  maxItemCount: 5
 --- !u!1 &960091783361447333
 GameObject:
   m_ObjectHideFlags: 0
