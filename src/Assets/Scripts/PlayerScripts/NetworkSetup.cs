@@ -33,6 +33,8 @@ public class NetworkSetup : NetworkBehaviour
             playerUIInstance = Instantiate(playerUIPrefab);
             HealthBar playerHB = playerUIInstance.GetComponentInChildren<HealthBar>();
             GetComponentInChildren<Health>().SetHealthBar(playerHB);
+            StorageBar playerSB = playerUIInstance.GetComponentInChildren<StorageBar>(includeInactive:true);
+            GetComponentInChildren<Score>().SetStorageBar(playerSB);
         }
     }
 

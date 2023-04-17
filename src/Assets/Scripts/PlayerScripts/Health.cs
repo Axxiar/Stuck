@@ -23,6 +23,11 @@ public class Health : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Backspace))
         {
             TakeDamage(20f);
+            if (health <= 0.0f) 
+            {
+                Debug.Log("YOU DIED !");
+                Time.timeScale = 0f;
+            }
         }
     }
 

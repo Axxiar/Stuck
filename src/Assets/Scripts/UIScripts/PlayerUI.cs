@@ -7,6 +7,7 @@ public class PlayerUI : NetworkBehaviour
     public static bool GameIsPaused;
     public GameObject pauseMenuUI;
     public GameObject hudUI;
+    public GameObject camUI;
 
     private NetworkManager networkManager;
 
@@ -24,8 +25,13 @@ public class PlayerUI : NetworkBehaviour
             else
                 PauseGame();
         }
+        else if (Input.GetKeyDown(KeyCode.E))
+        {
+            camUI.SetActive(!camUI.activeSelf);
+            hudUI.SetActive(!hudUI.activeSelf);
+        }
     }
-
+    
     public void ResumeGame()
     {
         //on cache le menu pause

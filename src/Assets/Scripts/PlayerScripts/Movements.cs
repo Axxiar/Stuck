@@ -17,7 +17,7 @@ public class Movements : MonoBehaviour
     public float jumpHeight = 7f;
     // Gravité
     // Cette valeur DOIT être négative sinon le joueur "tombe" vers le ciel
-    public float gravity = -19.62f;
+    public float gravity = -25.62f;
     
     // Fluidité du mouvement
     [Range(0.0f, 0.4f)] public float moveSmoothness = 0.1f;

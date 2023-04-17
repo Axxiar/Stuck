@@ -12,7 +12,7 @@ public class Whistle : MonoBehaviour
     {
         audioSource = GetComponent<AudioSource>();
     }
-
+    
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.R) && !audioSource.isPlaying && currentWhistleCD <= 0)

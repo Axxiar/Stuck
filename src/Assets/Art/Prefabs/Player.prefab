@@ -209,6 +209,7 @@ GameObject:
   - component: {fileID: 960091783704507622}
   - component: {fileID: 960091783704507623}
   - component: {fileID: 960091783704507625}
+  - component: {fileID: 8566138940668020744}
   - component: {fileID: 7834960481568758211}
   - component: {fileID: 199261248630179642}
   - component: {fileID: -7756468257687343761}
@@ -276,8 +277,22 @@ MonoBehaviour:
   walkSpeed: 7
   runSpeed: 12
   jumpHeight: 7
-  gravity: -19.62
+  gravity: -25.62
   moveSmoothness: 0.1
+--- !u!114 &8566138940668020744
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 960091783704507620}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1129796ebb8ab3b4596aad8aac4045db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  winScore: 10
+  coolDown: 1
 --- !u!114 &7834960481568758211
 MonoBehaviour:
   m_ObjectHideFlags: 0
