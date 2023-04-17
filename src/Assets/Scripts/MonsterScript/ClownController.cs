@@ -47,6 +47,7 @@ public class ClownController : MonoBehaviour
     private void Update()
     {
         targetsPlayers = GameObject.FindGameObjectsWithTag("Player");
+        navMeshAgent.speed = speed;
 
         if (targetsPlayers.Length >= 1)
         {
@@ -64,8 +65,7 @@ public class ClownController : MonoBehaviour
                 if (navMeshAgent.remainingDistance <= navMeshAgent.stoppingDistance) //done with path
                 {
                     Vector3 point;
-                    if (RandomPoint(navMeshAgent.transform.position, range,
-                            out point)) //pass in our centre point and radius of area
+                    if (RandomPoint(navMeshAgent.transform.position, range, out point)) //pass in our centre point and radius of area
                     {
                         navMeshAgent.SetDestination(point);
                     }
