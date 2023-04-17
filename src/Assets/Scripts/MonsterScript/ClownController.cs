@@ -10,6 +10,7 @@ public class ClownController : MonoBehaviour
     public float minDistance = 2.0f;
     private const string walk_state = "Walk";
     private const string run_state = "Run";
+    private const string attack_state = "Attack";
     private static bool isPlayerWhistling;
 
     private GameObject[] targetsPlayers;
@@ -72,12 +73,27 @@ public class ClownController : MonoBehaviour
             }
             else
             {
-                Run();
-                MovingToTarget(randomPlayer);
+                float distance = Vector3.Distance(transform.position, currentTarget.transform.position);
+                if (distance <= navMeshAgent.stoppingDistance)
+                {
+                    Debug.Log("attack");
+                    Attack();
+                }
+                else
+                {
+                    Run();
+                    MovingToTarget(randomPlayer);
+                }
             }
         }
 
 
+    }
+    
+    void Attack()
+    {
+        ResetAnimation();
+        _animator.SetBool(attack_state, true);
     }
 
     public void Run()
@@ -177,6 +193,7 @@ public class ClownController : MonoBehaviour
     {
         _animator.SetBool(walk_state, false);
         _animator.SetBool(run_state, false);
+        _animator.SetBool(attack_state,false);
 
 
 
