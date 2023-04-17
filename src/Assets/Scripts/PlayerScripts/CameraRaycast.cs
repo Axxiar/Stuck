@@ -2,7 +2,8 @@ using UnityEngine;
 
 public class CameraRaycast : MonoBehaviour
 {
-    public float viewRange;
+    public float enemiesViewRange;
+    public float itemsViewRange;
     private GameObject camHUD;
 
     RaycastHit hit;
@@ -15,7 +16,12 @@ public class CameraRaycast : MonoBehaviour
 
     void Update()
     {
-        Score.isFilming = false;
+        Score.IsFilming = false;
+        RaycastEnemies();
+    }
+
+    private void RaycastEnemies()
+    {
         if (!PlayerUI.CanFilm) // CanFilm est true lorsque le joueur a activé la caméra (voir PlayerUI.cs)
             return;
 
@@ -23,12 +29,13 @@ public class CameraRaycast : MonoBehaviour
         {
             for (int i = -20; i < 20; i+=3)
             {
-                ray = new Ray(transform.position, transform.forward * viewRange + transform.right * i + transform.up * j);
-                Debug.DrawRay(transform.position, transform.forward * viewRange + transform.right * i + transform.up * j, Color.green);
-                
-                if (Physics.Raycast(ray, out hit, viewRange) && hit.collider.CompareTag("Enemy"))
+                ray = new Ray(transform.position, transform.forward * enemiesViewRange + transform.right * i + transform.up * j);
+                Debug.DrawRay(transform.position, transform.forward * enemiesViewRange + transform.right * i + transform.up * j, Color.green);
+
+
+                if (Physics.Raycast(ray, out hit, enemiesViewRange) && hit.collider.CompareTag("Enemy"))
                 {
-                    Score.isFilming = true;
+                    Score.IsFilming = true;
                     return;
                 }
             }
