@@ -3,6 +3,9 @@ using UnityEngine;
 using Mirror;
 using Unity.VisualScripting;
 
+/// <summary>
+/// TEST
+/// </summary>
 public class NetworkSetup : NetworkBehaviour
 
 {
