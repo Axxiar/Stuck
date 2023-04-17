@@ -21,6 +21,7 @@ public class Whistle : MonoBehaviour
             audioSource.PlayOneShot(whistleClips[randomIndex]);
             currentWhistleCD = whistleCoolDown;
             MonsterController.SetIsPlayerWhistling(true);
+            ClownController.SetIsPlayerWhistling(true);
         }
 
         if (currentWhistleCD > 0)

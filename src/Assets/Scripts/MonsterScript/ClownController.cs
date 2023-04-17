@@ -76,7 +76,7 @@ public class ClownController : MonoBehaviour
                 float distance = Vector3.Distance(transform.position, currentTarget.transform.position);
                 if (distance <= navMeshAgent.stoppingDistance)
                 {
-                    Debug.Log("attack");
+                    Debug.Log(currentTarget.gameObject.name + " est attaqué !");
                     Attack();
                 }
                 else
@@ -86,10 +86,12 @@ public class ClownController : MonoBehaviour
                 }
             }
         }
-
-
     }
-    
+
+    public void DealDamage(int _dmg)
+    {
+        currentTarget.GetComponent<Health>().TakeDamage(_dmg);
+    }
     void Attack()
     {
         ResetAnimation();
@@ -106,7 +108,6 @@ public class ClownController : MonoBehaviour
     public static void SetIsPlayerWhistling(bool value)
     {
         isPlayerWhistling = value;
-
     }
 
     private bool MovingToTarget(GameObject player)
@@ -156,10 +157,7 @@ public class ClownController : MonoBehaviour
 
             return;
         }
-
-
         currentTarget = null;
-
     }
 
 
@@ -194,9 +192,5 @@ public class ClownController : MonoBehaviour
         _animator.SetBool(walk_state, false);
         _animator.SetBool(run_state, false);
         _animator.SetBool(attack_state,false);
-
-
-
-
     }
 }

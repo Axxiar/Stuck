@@ -37,8 +37,6 @@ public class NetworkSetup : NetworkBehaviour
             GetComponentInChildren<Score>().SetStorageBar(playerSB);
             
             Debug.Log(transform.name+" viens de se connecter");
-            Time.timeScale = 1f;
-            // GameIsPaused = false;
         }
     }
 

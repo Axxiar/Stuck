@@ -18,22 +18,15 @@ public class Health : MonoBehaviour
         // healthBar.SetMaxHealth(maxHealth);
     }
     
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Backspace))
-        {
-            TakeDamage(20f);
-            if (health <= 0.0f) 
-            {
-                Debug.Log("YOU DIED !");
-                Time.timeScale = 0f;
-            }
-        }
-    }
 
-    void TakeDamage(float damage)
+    public void TakeDamage(float damage)
     {
         health -= damage;
         healthBar.SetHealth(health,maxHealth);
+        if (health <= 0.0f) 
+        {
+            Debug.Log("YOU DIED !");
+            Time.timeScale = 0f;
+        }
     }
 }
