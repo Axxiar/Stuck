@@ -42,6 +42,16 @@ public class NetworkSetup : NetworkBehaviour
         }
     }
 
+    public override void OnStartClient()
+    {
+        base.OnStartClient();
+        // on récupère l'id du joueur et on l'ajoute à la liste des joueurs
+        string _netID = GetComponent<NetworkIdentity>().netId.ToString();
+        Player _player = GetComponent<Player>();
+        GameManager.RegisterPlayer(_netID, _player);
+    }
+
+
     // lorsque le script est désactivé (=joueur quitte la partie)
     private void OnDisable()
     {
@@ -50,5 +60,8 @@ public class NetworkSetup : NetworkBehaviour
         
         // on lui remet la caméra principale
         if (sceneCamera != null) sceneCamera.gameObject.SetActive(true);
+
+        // on enlève le joueur de la liste des joueurs
+        GameManager.UnRegisterPlayer(transform.name);
     }
 }
