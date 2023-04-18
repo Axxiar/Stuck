@@ -29,4 +29,9 @@ public class Health : MonoBehaviour
             Time.timeScale = 0f;
         }
     }
+
+    public string GetHealth()
+    {
+        return health.ToString();
+    }
 }

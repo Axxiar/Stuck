@@ -15,6 +15,9 @@ public class PlayerUI : NetworkBehaviour
 
     private NetworkManager networkManager;
 
+    [SerializeField]
+    private GameObject tabMenu;
+
     private void Start()
     {
         networkManager = NetworkManager.singleton;
@@ -22,6 +25,15 @@ public class PlayerUI : NetworkBehaviour
     
     public void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Tab))
+        {
+            tabMenu.SetActive(true);
+        }
+        else if (Input.GetKeyUp(KeyCode.Tab))
+        {
+            tabMenu.SetActive(false);
+        }
+
         if (Input.GetKeyDown(KeyCode.P))
         {
             if (GameIsPaused)
@@ -34,6 +46,8 @@ public class PlayerUI : NetworkBehaviour
             CanFilm = !CanFilm;
             transitionAnimator.SetTrigger("Fade");
         }
+
+        
         // else if (Input.GetKeyDown(KeyCode.A))
         // {
         //     IEnumerator cor = Alert("yo", 5f);
