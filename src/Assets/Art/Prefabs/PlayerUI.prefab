@@ -3612,7 +3612,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8844967387636299788, guid: b0212745d8275984bb3663321964c7da, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8844967387636299789, guid: b0212745d8275984bb3663321964c7da, type: 3}
       propertyPath: m_Pivot.x
@@ -3724,23 +3724,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerTabPrefab: {fileID: 0}
   playerTabParent: {fileID: 0}
---- !u!1 &4321581974039163065 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7415244660343662744, guid: b0212745d8275984bb3663321964c7da, type: 3}
-  m_PrefabInstance: {fileID: 6706258226996877345}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &229909802
+--- !u!114 &2566648403894131277
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4321581974039163065}
+  m_GameObject: {fileID: 2859443447872970797}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 42b90fd4ff7b5564094c076a9481cb12, type: 3}
+  m_Script: {fileID: 11500000, guid: 17975e52883403f4d9f9187ff276e7b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Username: {fileID: 0}
-  Info1: {fileID: 0}
-  Info2: {fileID: 0}
+  playerTabPrefab: {fileID: 0}
+  playerTabParent: {fileID: 0}

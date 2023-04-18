@@ -45778,26 +45778,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2859443447872970797, guid: 5bf14d878177faf47995b31c181d28ff, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3078864727477095536, guid: 5bf14d878177faf47995b31c181d28ff, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3078864727477095536, guid: 5bf14d878177faf47995b31c181d28ff, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3078864727477095536, guid: 5bf14d878177faf47995b31c181d28ff, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3078864727477095536, guid: 5bf14d878177faf47995b31c181d28ff, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3433715807490370664, guid: 5bf14d878177faf47995b31c181d28ff, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -45968,25 +45948,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1780179135 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2859443447872970797, guid: 5bf14d878177faf47995b31c181d28ff, type: 3}
-  m_PrefabInstance: {fileID: 1576150864}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1780179137
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1780179135}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 17975e52883403f4d9f9187ff276e7b3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerTabPrefab: {fileID: 0}
-  playerTabParent: {fileID: 0}
 --- !u!43 &1843066569
 Mesh:
   m_ObjectHideFlags: 0

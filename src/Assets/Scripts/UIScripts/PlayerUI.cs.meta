@@ -3,7 +3,12 @@ guid: 4dbfdba14a2ce1c4f91e37631234e451
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - transitionAnimator: {instanceID: 0}
+  - pauseMenuUI: {instanceID: 0}
+  - hudUI: {instanceID: 0}
+  - camUI: {instanceID: 0}
+  - tabMenu: {fileID: 6451139530870021807, guid: 2aebfd5a8dedcff41b4cd02603d1f887, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
