@@ -38,10 +38,25 @@ public class NetworkSetup : NetworkBehaviour
             GetComponentInChildren<Health>().SetHealthBar(playerHB);
             StorageBar playerSB = playerUIInstance.GetComponentInChildren<StorageBar>(includeInactive:true);
             GetComponentInChildren<Score>().SetStorageBar(playerSB);
-            
-            Debug.Log(transform.name+" viens de se connecter");
+
+            // on lui donne son nom
+            string username = UserAccountManager.LoggedInUsername;
+            CmdSetUsername(transform.name, username);
+
+            Debug.Log(username + " viens de se connecter");
         }
         //test
+    }
+
+    [Command]
+    private void CmdSetUsername(string playerID, string username)
+    {
+        Player player = GameManager.GetPlayer(playerID);
+        if (player != null)
+        {
+            Debug.Log(username + " a rejoint la partie");
+            player.username = username;
+        }
     }
 
     public override void OnStartClient()
