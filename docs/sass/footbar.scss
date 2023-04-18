@@ -18,22 +18,6 @@ footer {
     }
 
     .link-to-about {
-        text-decoration: none;
-        position: relative;
-          
-        &::after{
-            content: '';
-            display: block;
-            position: absolute;
-            width: 0%;
-            height: 1px;
-            left: -2px;
-            background-color: white;
-            transition: width 0.3s;
-        }
-          
-        &:hover::after {
-            width: 100%;
-        }
+        @include link-animation(-3px);
     }
 }

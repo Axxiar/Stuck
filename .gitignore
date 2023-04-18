@@ -2,6 +2,8 @@
 /[Tt]ests/
 /[Ss]ite/
 /src/.idea/
+/docs/prepros.config
+
 
 # This .gitignore file should be placed at the root of your Unity project directory
 #

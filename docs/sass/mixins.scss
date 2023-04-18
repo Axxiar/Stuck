@@ -77,3 +77,23 @@
         }
     }
 }
+
+@mixin link-animation($leftshift: 0px) {
+    text-decoration: none;
+    position: relative;
+          
+        &::after{
+            content: '';
+            display: block;
+            position: absolute;
+            width: 0%;
+            height: 1px;
+            left: $leftshift;
+            background-color: white;
+            transition: width 0.3s;
+        }
+          
+        &:hover::after {
+            width: 100%;
+        }
+}

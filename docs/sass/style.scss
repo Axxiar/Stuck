@@ -56,8 +56,8 @@ html {
 $main-color: #4a0000;
 
 @import "navbar.scss";
-@import "footbar.scss";
 @import "mixins.scss";
+@import "footbar.scss";
 
 // -- index.html -- 
 
@@ -265,5 +265,31 @@ article {
     @media screen and (min-width: 1320px) {
         flex-basis: 20%;
         flex-grow: .2;
+    }
+}
+
+// -- resources.html --
+
+.resources-content {
+    details {
+        margin-top: 5vh;
+        margin-left: calc(15px + 5vw);
+        margin-bottom: 5vh;
+    }
+
+    summary {
+        font-family: 'Segoe UI', Tahoma, Verdana, sans-serif;
+        font-size: 30px;
+        font-weight: bold;
+    }
+
+    li {
+        margin-left: 50px;
+        padding: 10px;
+    }
+
+    a {
+        font-size: 20px;
+        @include link-animation;
     }
 }
