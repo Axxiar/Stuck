@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Enemy
   - Item
+  - AlertBox
   layers:
   - Default
   - TransparentFX
