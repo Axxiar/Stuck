@@ -3,9 +3,7 @@ using UnityEngine;
 using Mirror;
 using Unity.VisualScripting;
 
-/// <summary>
-/// TEST
-/// </summary>
+
 public class NetworkSetup : NetworkBehaviour
 
 {
@@ -45,7 +43,6 @@ public class NetworkSetup : NetworkBehaviour
 
             Debug.Log(username + " viens de se connecter");
         }
-        //test
     }
 
     [Command]

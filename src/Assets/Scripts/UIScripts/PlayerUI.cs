@@ -1,6 +1,8 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using Mirror;
+using TMPro;
 
 public class PlayerUI : NetworkBehaviour
 {
@@ -17,7 +19,7 @@ public class PlayerUI : NetworkBehaviour
     {
         networkManager = NetworkManager.singleton;
     }
-
+    
     public void Update()
     {
         if (Input.GetKeyDown(KeyCode.P))
@@ -32,7 +34,22 @@ public class PlayerUI : NetworkBehaviour
             CanFilm = !CanFilm;
             transitionAnimator.SetTrigger("Fade");
         }
+        // else if (Input.GetKeyDown(KeyCode.A))
+        // {
+        //     IEnumerator cor = Alert("yo", 5f);
+        //     StartCoroutine(cor);
+        // }
     }
+
+    /// <summary>
+    /// Affiche temporairemet le message donné en paramètre au joueur
+    /// </summary>
+    // public static IEnumerator Alert(string message, float displayTime)
+    // {
+    //  
+    //     
+    // }
+
     public void SwitchToCamMod()
     {
         camUI.SetActive(!camUI.activeSelf);
