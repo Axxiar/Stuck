@@ -65,7 +65,7 @@ nav .container .pages a.current {
 nav .container .title {
   display: flex;
   align-items: center;
-  padding: 0 2vw 0 1vw;
+  padding: 0 5vw 0 1vw;
 }
 nav .container .title img {
   width: 70px;
@@ -345,6 +345,7 @@ article {
 }
 
 .card {
+  cursor: help;
   padding: 20px;
   height: 200px;
   max-width: 450px;

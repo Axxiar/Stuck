@@ -254,6 +254,8 @@ article {
 }
 
 .card {
+    cursor: help;
+
     @include card;
     margin: 10px;
     flex-basis: 33%;
