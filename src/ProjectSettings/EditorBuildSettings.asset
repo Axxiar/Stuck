@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Test.unity
     guid: 42d4c93d1a5ffef42bb994afcaa7de49
+  - enabled: 0
+    path: Assets/Scenes/Tests Alexis.unity
+    guid: 5aadaf9b1ed067c4a8634118a0180dd2
   m_configObjects: {}

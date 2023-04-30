@@ -34,7 +34,7 @@ public class PlayerUI : NetworkBehaviour
             tabMenu.SetActive(false);
         }
 
-        if (Input.GetKeyDown(KeyCode.P))
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (GameIsPaused)
                 ResumeGame();

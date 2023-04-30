@@ -1304,7 +1304,7 @@ MonoBehaviour:
   pauseMenuUI: {fileID: 3433715809155161065}
   hudUI: {fileID: 3433715808575037286}
   camUI: {fileID: 7389432218819262506}
-  tabMenu: {fileID: 0}
+  tabMenu: {fileID: 2859443447872970797}
 --- !u!114 &7960676858572565597
 MonoBehaviour:
   m_ObjectHideFlags: 0

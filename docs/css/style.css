@@ -39,7 +39,7 @@ nav .container {
   display: flex;
   justify-content: space-between;
 }
-@media (max-width: 500px) {
+@media (max-width: 590px) {
   nav .container {
     justify-content: space-evenly;
   }
@@ -84,7 +84,7 @@ nav .container .title img {
 nav .container .title img:hover {
   margin-right: 0px;
 }
-@media (max-width: 500px) {
+@media (max-width: 590px) {
   nav .container .title img {
     display: none;
   }
