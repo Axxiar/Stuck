@@ -1,3 +1,4 @@
+
 @font-face {
     font-family: "Restless";
     src: url("../assets/restless-soul-bb.regular.otf");
@@ -13,13 +14,15 @@ html {
     font-family: 'Segoe UI', Tahoma, Verdana, sans-serif;
     background: linear-gradient(345deg, rgb(19, 0, 0) 0%, rgb(62, 21, 21) 100%) no-repeat;
     background-attachment: fixed;
+    min-height: 100%;
+
     ::-webkit-scrollbar {
         width: 10px;
     }
     ::-webkit-scrollbar-thumb {
         background: rgba(243, 229, 229, 0.784);
         border-radius: 7px;
-
+        
         &:hover {
             background: rgba(154, 144, 144, 0.784);
             border-radius: 2px;
@@ -33,14 +36,14 @@ html {
 
 @mixin aspect-ratio($width, $height) {
     position: relative;
-
+    
     &:before {
         display: block;
         content: "";
         width: 100%;
         padding-top: ($height / $width) * 100%;
     }
-
+    
     > img {
         position: absolute;
         top: 0;
@@ -54,6 +57,7 @@ html {
 
 
 $main-color: #4a0000;
+$mobile-width: 590px; // taille pour les changements responsive
 
 @import "navbar.scss";
 @import "mixins.scss";
@@ -62,14 +66,16 @@ $main-color: #4a0000;
 // -- index.html -- 
 
 article {
-    padding: 10rem;
+    padding: calc(5vw + 10px);
 }
 
 
-.container {
-    max-width: 750px;
-    margin: 0 auto;
-    padding: 0 20px;
+section {
+    .container {
+        max-width: 650px;
+        margin: 0 auto;
+        padding: 0 20px;
+    }
 }
 
 .carousel {
@@ -254,6 +260,8 @@ article {
 }
 
 .card {
+    cursor: help;
+
     @include card;
     margin: 10px;
     flex-basis: 33%;

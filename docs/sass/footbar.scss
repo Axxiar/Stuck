@@ -1,4 +1,5 @@
 footer {
+    margin-top: 164px;
     text-align: center;
     background-color: $main-color;
     padding: 4vh 3vw;
@@ -13,7 +14,6 @@ footer {
         
         &:hover {
             border: 2px solid white;
-            // border-radius: 50%;
         }
     }
 
