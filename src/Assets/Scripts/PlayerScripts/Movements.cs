@@ -38,28 +38,29 @@ public class Movements : MonoBehaviour
         if (PlayerUI.GameIsPaused)
         {
             controller.Move(Vector3.zero);
-            return;
         }
-        
-        // gestion des différentes vitesses de déplacement
-        //fast
-        if (Input.GetKey(KeyCode.LeftShift))
-            _currentSpeed = runSpeed;
-        //slow
-        else if (Input.GetKey(KeyCode.LeftControl))
-            _currentSpeed = slowWalkSpeed;
-        //normal
         else
-            _currentSpeed = walkSpeed;
-        
-        // récup des directions
-        Vector2 targetDir = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
-        
-        // normalisation du vecteur pour que sa longueur soit toujours 1 même en diagonal
-        targetDir.Normalize();
+        {
+            // gestion des différentes vitesses de déplacement
+            //fast
+            if (Input.GetKey(KeyCode.LeftShift))
+                _currentSpeed = runSpeed;
+            //slow
+            else if (Input.GetKey(KeyCode.LeftControl))
+                _currentSpeed = slowWalkSpeed;
+            //normal
+            else
+                _currentSpeed = walkSpeed;
 
-        // smooth du déplacement (uniquement axe z et x)
-        _currentDir = Vector2.SmoothDamp(_currentDir, targetDir, ref _currentVelocity, moveSmoothness);
+            // récup des directions
+            Vector2 targetDir = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+
+            // normalisation du vecteur pour que sa longueur soit toujours 1 même en diagonal
+            targetDir.Normalize();
+
+            // smooth du déplacement (uniquement axe z et x)
+            _currentDir = Vector2.SmoothDamp(_currentDir, targetDir, ref _currentVelocity, moveSmoothness);
+        }
 
         // si saut
         // if (controller.isGrounded && Input.GetButtonDown("Jump"))

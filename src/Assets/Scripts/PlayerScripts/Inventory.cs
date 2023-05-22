@@ -28,7 +28,7 @@ public class Inventory : MonoBehaviour
                 }
                 else
                 {
-                    StartCoroutine(PlayerUI.Alert("You already have 5 batteries", 1.5f));
+                    StartCoroutine(PlayerUI.Notify("You already have 5 batteries", 1.5f));
                 }
             }
         }
