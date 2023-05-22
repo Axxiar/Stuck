@@ -4,6 +4,8 @@ using UnityEngine;
 using Mirror;
 using TMPro;
 
+
+
 public class PlayerUI : NetworkBehaviour
 {
     public static bool GameIsPaused;
@@ -14,6 +16,7 @@ public class PlayerUI : NetworkBehaviour
     public GameObject camUI;
 
     private NetworkManager networkManager;
+    private static GameObject notification;
 
     [SerializeField]
     private GameObject tabMenu;
@@ -48,21 +51,19 @@ public class PlayerUI : NetworkBehaviour
         }
 
         
-        // else if (Input.GetKeyDown(KeyCode.A))
-        // {
-        //     IEnumerator cor = Alert("yo", 5f);
-        //     StartCoroutine(cor);
-        // }
+
     }
 
     /// <summary>
     /// Affiche temporairemet le message donné en paramètre au joueur
     /// </summary>
-    // public static IEnumerator Alert(string message, float displayTime)
-    // {
-    //  
-    //     
-    // }
+    public static IEnumerator Alert(string message, float displayTime)
+    {
+        notification.SetActive(true);
+        notification.GetComponent<TextMeshProUGUI>().text = message;
+        yield return new WaitForSeconds(displayTime);
+        notification.SetActive(false);
+    }
 
     public void SwitchToCamMod()
     {
@@ -111,5 +112,10 @@ public class PlayerUI : NetworkBehaviour
             Debug.Log("Serveur coupé");
             networkManager.StopHost();
         }
+    }
+
+    public void SetNotification(GameObject _notif)
+    {
+        notification = _notif;
     }
 }

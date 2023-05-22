@@ -2,7 +2,6 @@
 using System;
 using UnityEngine;
 using Random = UnityEngine.Random;
-
 public class Inventory : MonoBehaviour
 {
     public GameObject battery;
@@ -26,6 +25,10 @@ public class Inventory : MonoBehaviour
                 {
                     batteriesCount += 1;
                     Destroy(hit.transform.gameObject);
+                }
+                else
+                {
+                    StartCoroutine(PlayerUI.Alert("You already have 5 batteries", 1.5f));
                 }
             }
         }
