@@ -93,7 +93,7 @@ public class PlayerUI : NetworkBehaviour
     /// <summary>
     /// Affiche temporairemet le message donné en paramètre au joueur
     /// </summary>
-    public static IEnumerator Notify(string message, float displayTime)
+    public static IEnumerator Alert(string message, float displayTime)
     {
         notification.SetActive(true);
         notification.GetComponent<TextMeshProUGUI>().text = message;
