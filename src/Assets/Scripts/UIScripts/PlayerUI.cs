@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEngine;
 using Mirror;
 using TMPro;
-using UnityEditor;
+
 
 
 public class PlayerUI : NetworkBehaviour
@@ -21,8 +21,6 @@ public class PlayerUI : NetworkBehaviour
     [SerializeField]
     private GameObject tabMenu;
 
-    [SerializeField] private GameObject itemsMenu;
-
     private void Start()
     {
         networkManager = NetworkManager.singleton;
@@ -33,12 +31,10 @@ public class PlayerUI : NetworkBehaviour
         if (Input.GetKeyDown(KeyCode.Tab))
         {
             tabMenu.SetActive(true);
-            Cursor.lockState = CursorLockMode.Confined;
         }
         else if (Input.GetKeyUp(KeyCode.Tab))
         {
             tabMenu.SetActive(false);
-            Cursor.lockState = CursorLockMode.Locked;
         }
 
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -54,24 +50,14 @@ public class PlayerUI : NetworkBehaviour
             transitionAnimator.SetTrigger("Fade");
         }
 
-        if (Input.GetKeyDown(KeyCode.I))
-        {
-            GameIsPaused = true;
-            itemsMenu.SetActive(true);
-            Cursor.lockState = CursorLockMode.Confined;
-        }
-        else if (Input.GetKeyUp(KeyCode.I))
-        {
-            Cursor.lockState = CursorLockMode.Locked;
-            itemsMenu.SetActive(false);
-            GameIsPaused = false;
-        }
+        
+
     }
 
     /// <summary>
     /// Affiche temporairemet le message donné en paramètre au joueur
     /// </summary>
-    public static IEnumerator Notify(string message, float displayTime)
+    public static IEnumerator Alert(string message, float displayTime)
     {
         notification.SetActive(true);
         notification.GetComponent<TextMeshProUGUI>().text = message;
