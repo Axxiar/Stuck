@@ -103,13 +103,18 @@ footer {
   padding: 4vh 3vw;
   font-family: "Segoe UI", Tahoma, Verdana, sans-serif;
 }
-footer svg {
-  padding: 5px;
+footer a {
+  text-decoration: none;
+}
+footer svg, footer img {
+  width: 40px;
+  height: 40px;
+  padding: 4px;
   border: 0px solid white;
   border-radius: 50%;
   transition: border 0.06s ease-in-out;
 }
-footer svg:hover {
+footer svg:hover, footer img:hover {
   border: 2px solid white;
 }
 footer .link-to-about {
@@ -359,7 +364,7 @@ section .container {
 .card {
   cursor: help;
   padding: 20px;
-  height: 200px;
+  height: 300px;
   max-width: 450px;
   min-width: 300px;
   background-color: rgba(0, 0, 0, 0.3921568627);
@@ -391,7 +396,7 @@ section .container {
   }
 }
 .card:hover {
-  height: 215px;
+  height: 315px;
   flex-grow: 0.4;
 }
 @media screen and (min-width: 1320px) {
@@ -399,6 +404,52 @@ section .container {
     flex-basis: 20%;
     flex-grow: 0.2;
   }
+}
+
+.members {
+  margin: 5% 0 10% 0;
+  text-align: center;
+}
+.members h1 {
+  margin-bottom: 4%;
+}
+
+.techs {
+  margin: 7%;
+  text-align: center;
+}
+.techs .icons {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 10px 10px;
+  margin: 50px;
+}
+.techs .icons .item, .techs .icons .git-item, .techs .icons .web-item {
+  background-color: rgba(255, 30, 34, 0.3921568627);
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 300ms ease-in-out;
+}
+.techs .icons .item:hover, .techs .icons .git-item:hover, .techs .icons .web-item:hover {
+  background-color: #4a0000;
+}
+.techs .icons .item svg:hover, .techs .icons .git-item svg:hover, .techs .icons .web-item svg:hover {
+  cursor: pointer;
+}
+.techs .icons .item svg {
+  height: 60%;
+  width: 60%;
+}
+.techs .icons .git-item svg {
+  padding: 0 5%;
+  height: 40%;
+  width: 20%;
+}
+.techs .icons .web-item svg {
+  height: 35%;
+  width: 35%;
 }
 
 .resources-content details {

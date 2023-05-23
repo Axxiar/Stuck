@@ -266,13 +266,70 @@ section {
     margin: 10px;
     flex-basis: 33%;
     &:hover {
-        height: 215px;
+        height: 315px;
         flex-grow: .4;
     }
     
     @media screen and (min-width: 1320px) {
         flex-basis: 20%;
         flex-grow: .2;
+    }
+}
+
+.members {
+    margin: 5% 0 10% 0;
+    text-align: center;
+    h1 {
+        margin-bottom: 4%;
+    }
+}
+
+.techs {
+    margin: 7%;
+    text-align: center;
+
+    
+    .icons {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-gap: 10px 10px;
+        
+        margin: 50px;
+    
+        .item, .git-item, .web-item {
+            background-color: #ff1e2264;
+            border-radius: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: all 300ms ease-in-out;
+
+            &:hover {
+                background-color: #4a0000;
+            }
+            svg:hover {
+                cursor: pointer;
+            }
+        }
+        .item {
+            svg {
+                height: 60%;
+                width: 60%;
+            }
+        }
+        .git-item {
+            svg {
+                padding: 0 5%;
+                height: 40%;
+                width: 20%;
+            }
+        }
+        .web-item {
+            svg {
+                height: 35%;
+                width: 35%;
+            }
+        }
     }
 }
 

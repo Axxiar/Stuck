@@ -6,8 +6,14 @@ footer {
     font-family: 'Segoe UI', Tahoma, Verdana, sans-serif;
 
 
-    svg {
-        padding: 5px;
+    a {
+        text-decoration: none;
+    }
+
+    svg, img {
+        width: 40px;
+        height: 40px;
+        padding: 4px;
         border: 0px solid white;
         border-radius: 50%;
         transition: border .06s ease-in-out;
