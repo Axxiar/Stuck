@@ -32,7 +32,15 @@ public class NetworkSetup : NetworkBehaviour
             
             // création du UI du joueur (local uniquement)
             playerUIInstance = Instantiate(playerUIPrefab);
-            playerUIInstance.GetComponent<PlayerUI>().SetNotification(playerUIInstance.transform.GetChild(6).gameObject);
+            
+            // !!!!! IMPORTANT !!!
+            // ici le seul moyen que j'ai trouvé de récupérer sur l'ui du player (cf. le prefab PlayerUI) le text qui sert
+            // à afficher les notifs, c'est de faire comme ci-dessous. Attention au nombre 7 il peut causer des erreurs si on 
+            // bidouille l'ui.
+            // Le 7 correspond au 7ème élément dans le prefab "PlayerUI" c'est à dire (si tout est en ordre) 
+            playerUIInstance.GetComponent<PlayerUI>().SetNotification(playerUIInstance.transform.GetChild(7).gameObject);
+            // !!!!!!!!!!!!!!!!!!!
+            
             HealthBar playerHB = playerUIInstance.GetComponentInChildren<HealthBar>();
             GetComponentInChildren<Health>().SetHealthBar(playerHB);
             StorageBar playerSB = playerUIInstance.GetComponentInChildren<StorageBar>(includeInactive:true);

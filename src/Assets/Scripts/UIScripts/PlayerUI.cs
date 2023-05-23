@@ -1,9 +1,11 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using Mirror;
 using TMPro;
 using UnityEditor;
+using UnityEngine.UI;
 
 
 public class PlayerUI : NetworkBehaviour
@@ -22,7 +24,8 @@ public class PlayerUI : NetworkBehaviour
     private GameObject tabMenu;
 
     [SerializeField] private GameObject itemsMenu;
-
+    public Sprite batterySprite;
+    public List<GameObject> items;
     private void Start()
     {
         networkManager = NetworkManager.singleton;
@@ -30,16 +33,52 @@ public class PlayerUI : NetworkBehaviour
     
     public void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Tab))
+        if (!GameIsPaused)
         {
-            tabMenu.SetActive(true);
-            Cursor.lockState = CursorLockMode.Confined;
+            if (Input.GetKeyDown(KeyCode.Tab))
+            {
+                tabMenu.SetActive(true);
+                Cursor.lockState = CursorLockMode.Confined;
+            }
+            else if (Input.GetKeyUp(KeyCode.Tab))
+            {
+                tabMenu.SetActive(false);
+                Cursor.lockState = CursorLockMode.Locked;
+            }
+            
+            if (Input.GetKeyDown(KeyCode.Mouse1))
+            {
+                CanFilm = !CanFilm;
+                transitionAnimator.SetTrigger("Fade");
+            }
+            if (Input.GetKeyDown(KeyCode.I))
+            {
+                itemsMenu.SetActive(true);
+                Image image;
+                for (int i = 0; i < Inventory.BatteriesCount; i++)
+                {
+                    image = items[i].GetComponent<Image>();
+                    image.sprite = batterySprite;
+                    var tempColor = image.color;
+                    tempColor.a = 1f;
+                    image.color = tempColor;
+                }
+            }
+            else if (Input.GetKeyUp(KeyCode.I))
+            {
+                Image image;
+                for (int i = 0; i < 5; i++)
+                {
+                    image = items[i].GetComponent<Image>();
+                    image.sprite = null;
+                    var tempColor = image.color;
+                    tempColor.a = 0.168f;
+                    image.color = tempColor;
+                }
+                itemsMenu.SetActive(false);
+            }
         }
-        else if (Input.GetKeyUp(KeyCode.Tab))
-        {
-            tabMenu.SetActive(false);
-            Cursor.lockState = CursorLockMode.Locked;
-        }
+        
 
         if (Input.GetKeyDown(KeyCode.Escape))
         {
@@ -48,24 +87,7 @@ public class PlayerUI : NetworkBehaviour
             else
                 PauseGame();
         }
-        else if (Input.GetKeyDown(KeyCode.E))
-        {
-            CanFilm = !CanFilm;
-            transitionAnimator.SetTrigger("Fade");
-        }
 
-        if (Input.GetKeyDown(KeyCode.I))
-        {
-            GameIsPaused = true;
-            itemsMenu.SetActive(true);
-            Cursor.lockState = CursorLockMode.Confined;
-        }
-        else if (Input.GetKeyUp(KeyCode.I))
-        {
-            Cursor.lockState = CursorLockMode.Locked;
-            itemsMenu.SetActive(false);
-            GameIsPaused = false;
-        }
     }
 
     /// <summary>
@@ -86,8 +108,9 @@ public class PlayerUI : NetworkBehaviour
     }
     public void ResumeGame()
     {
-        //on cache le menu pause
         pauseMenuUI.SetActive(false);
+        // pas opti mais plus safe :
+        HideMenus();
         //on affiche le HUD
         hudUI.SetActive(true);
         //on defreeze le jeu
@@ -101,8 +124,7 @@ public class PlayerUI : NetworkBehaviour
     {
         //on freeze le jeu
         Time.timeScale = 0f;
-        //on cache le HUD
-        hudUI.SetActive(false);
+        HideMenus();
         //on affiche le menu pause
         pauseMenuUI.SetActive(true);
         //on débloque le curseur
@@ -131,5 +153,17 @@ public class PlayerUI : NetworkBehaviour
     public void SetNotification(GameObject _notif)
     {
         notification = _notif;
+    }
+
+    private void HideMenus()
+    {
+        //on cache le HUD
+        hudUI.SetActive(false);
+        itemsMenu.SetActive(false);
+        tabMenu.SetActive(false);
+        if (CanFilm)
+            CanFilm = false;
+        camUI.SetActive(false);
+        
     }
 }
