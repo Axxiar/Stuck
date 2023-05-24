@@ -7,7 +7,7 @@ public class CameraBattery : MonoBehaviour
 {
     public static bool IsCamBatteryEmpty; 
     public float coolDownTime;
-    public static float currentBatteryPercent;
+    public float currentBatteryPercent;
         
     private CamBatteryBar camBatteryBar;
     private float coolDown;

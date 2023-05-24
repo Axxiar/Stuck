@@ -393,6 +393,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coolDownTime: 3
+  currentBatteryPercent: 0
 --- !u!82 &6354087685360415769
 AudioSource:
   m_ObjectHideFlags: 0
@@ -576,6 +577,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d0ff6d30909ed6499fede703a4ea9a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _cameraBattery: {fileID: 7253248356966691772}
 --- !u!1001 &7907953836975078302
 PrefabInstance:
   m_ObjectHideFlags: 0
