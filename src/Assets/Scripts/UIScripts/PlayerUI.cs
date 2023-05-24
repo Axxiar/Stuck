@@ -7,11 +7,10 @@ using TMPro;
 using UnityEditor;
 using UnityEngine.UI;
 
-
 public class PlayerUI : NetworkBehaviour
 {
     public static bool GameIsPaused;
-    public static bool IsFilming = false;
+    public static bool IsCameraOn;
     public Animator transitionAnimator;
     public GameObject pauseMenuUI;
     public GameObject hudUI;
@@ -35,6 +34,12 @@ public class PlayerUI : NetworkBehaviour
     {
         if (!GameIsPaused)
         {
+            // Désactive l'ui caméra quand elle a plus de batterie et réactive l'hud
+            if (camUI.activeSelf && CameraBattery.IsCamBatteryEmpty)
+            {
+                HideMenus(false,false,true,false,false,false);
+                hudUI.SetActive(true);
+            }
             if (Input.GetKeyDown(KeyCode.Tab))
             {
                 tabMenu.SetActive(true);
@@ -48,8 +53,16 @@ public class PlayerUI : NetworkBehaviour
             
             if (Input.GetKeyDown(KeyCode.Mouse1))
             {
-                IsFilming = !IsFilming;
-                transitionAnimator.SetTrigger("Fade");
+                if (!CameraBattery.IsCamBatteryEmpty)
+                {
+                    IsCameraOn = !IsCameraOn;
+                    // l'ui de la caméra est activé/desactivé à la fin de l'animation Fade
+                    transitionAnimator.SetTrigger("Fade");
+                }
+                else
+                {
+                    StartCoroutine(Notify("Camera battery is discharged, reload it by collecting batteries in the manor", 3.5f));
+                }
             }
             if (Input.GetKeyDown(KeyCode.I))
             {
@@ -87,13 +100,12 @@ public class PlayerUI : NetworkBehaviour
             else
                 PauseGame();
         }
-
     }
 
     /// <summary>
     /// Affiche temporairemet le message donné en paramètre au joueur
     /// </summary>
-    public static IEnumerator Alert(string message, float displayTime)
+    public static IEnumerator Notify(string message, float displayTime)
     {
         notification.SetActive(true);
         notification.GetComponent<TextMeshProUGUI>().text = message;
@@ -109,8 +121,7 @@ public class PlayerUI : NetworkBehaviour
     public void ResumeGame()
     {
         pauseMenuUI.SetActive(false);
-        // pas opti mais plus safe :
-        HideMenus();
+        HideMenus(false,true,true,true,true,true);
         //on affiche le HUD
         hudUI.SetActive(true);
         //on defreeze le jeu
@@ -124,7 +135,7 @@ public class PlayerUI : NetworkBehaviour
     {
         //on freeze le jeu
         Time.timeScale = 0f;
-        HideMenus();
+        HideMenus(true, false, true, true, true,true);
         //on affiche le menu pause
         pauseMenuUI.SetActive(true);
         //on débloque le curseur
@@ -155,15 +166,23 @@ public class PlayerUI : NetworkBehaviour
         notification = _notif;
     }
 
-    private void HideMenus()
+    private void HideMenus(bool hud, bool pause, bool cam, bool tab, bool inventory, bool notif)
     {
-        //on cache le HUD
-        hudUI.SetActive(false);
-        itemsMenu.SetActive(false);
-        tabMenu.SetActive(false);
-        if (IsFilming)
-            IsFilming = false;
-        camUI.SetActive(false);
-        
+        if (hud) 
+            hudUI.SetActive(false);
+        if (pause)
+            pauseMenuUI.SetActive(false);
+        if (cam)
+        {
+            camUI.SetActive(false);
+            if (IsCameraOn)
+                IsCameraOn = false;
+        }
+        if (tab)
+            tabMenu.SetActive(false);
+        if (inventory)
+            itemsMenu.SetActive(false);
+        if (notif)
+            notification.SetActive(false);
     }
 }

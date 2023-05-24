@@ -45,7 +45,9 @@ public class NetworkSetup : NetworkBehaviour
             GetComponentInChildren<Health>().SetHealthBar(playerHB);
             StorageBar playerSB = playerUIInstance.GetComponentInChildren<StorageBar>(includeInactive:true);
             GetComponentInChildren<Score>().SetStorageBar(playerSB);
-
+            CamBatteryBar playerCBB = playerUIInstance.GetComponentInChildren<CamBatteryBar>(includeInactive: true);
+            Debug.Log(playerCBB);
+            GetComponentInChildren<CameraBattery>().SetCamBatteryBar(playerCBB);
             // on lui donne son nom
             string username = UserAccountManager.LoggedInUsername;
             CmdSetUsername(transform.name, username);

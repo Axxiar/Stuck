@@ -5,8 +5,8 @@ using UnityEngine;
 public class Health : MonoBehaviour
 {
     public float maxHealth = 100f;
-    public HealthBar healthBar;
     
+    private HealthBar healthBar;
     private float health;
     public void SetHealthBar(HealthBar _hb)
     {
@@ -25,7 +25,7 @@ public class Health : MonoBehaviour
         healthBar.SetHealth(health,maxHealth);
         if (health <= 0.0f) 
         {
-            Debug.Log("YOU DIED !");
+            StartCoroutine(PlayerUI.Notify("You Won !", 2f));
             Time.timeScale = 0f;
         }
     }

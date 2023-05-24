@@ -22,7 +22,7 @@ public class CameraRaycast : MonoBehaviour
 
     private void RaycastEnemies()
     {
-        if (!PlayerUI.IsFilming) // CanFilm est true lorsque le joueur a activé la caméra (voir PlayerUI.cs)
+        if (!PlayerUI.IsCameraOn) // CanFilm est true lorsque le joueur a activé la caméra (voir PlayerUI.cs)
             return;
 
         for (int j = -10; j < 10; j+=5)

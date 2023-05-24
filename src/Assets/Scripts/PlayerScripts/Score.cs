@@ -37,7 +37,7 @@ public class Score : MonoBehaviour
                 
                 if (currentScore >= winScore)
                 {
-                    Debug.Log("VOUS AVEZ GAGNE !!");
+                    StartCoroutine(PlayerUI.Notify("You Won !", 2f));
                     Time.timeScale = 0f;
                 }
                 coolDown = 1.5f;
