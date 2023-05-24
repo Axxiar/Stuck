@@ -477,6 +477,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8535413606140209799}
   - component: {fileID: 7617722966785786184}
+  - component: {fileID: 614354685390566192}
   m_Layer: 0
   m_Name: Spot Light
   m_TagString: Untagged
@@ -561,6 +562,18 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &614354685390566192
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7190554189346930309}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9632f462b7e294a4d8bd77e4cd3e30bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &6090103688600827881
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -648,18 +661,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
---- !u!114 &1330198889050476497
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6360504172065065656}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 016c726a072d9e14690e4c633fb33656, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &9182657092719578347 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -6058681868354798846, guid: fd48e8b0fb442eb498bf4567ef3ad543, type: 3}
