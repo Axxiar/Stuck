@@ -27,12 +27,12 @@ public class CameraBattery : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.L))
         {
             if (Inventory.BatteriesCount == 0)
-                StartCoroutine(PlayerUI.Notify("You do not have batteries", 1.5f));
+                StartCoroutine(PlayerUI.Notify("You do not have batteries", 2f));
             else
             {
                 if (currentBatteryPercent > 66f)
                 {
-                    StartCoroutine(PlayerUI.Notify("Your battery is already full ", 1.5f));
+                    StartCoroutine(PlayerUI.Notify("Your battery is already full ", 2f));
                 }
                 else
                 {

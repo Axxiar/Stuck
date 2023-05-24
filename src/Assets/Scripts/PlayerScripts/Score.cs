@@ -8,11 +8,12 @@ public class Score : MonoBehaviour
     public int winScore;
     public static bool IsFilmingEnnemy; // booléen qui permet de vérifier si le joueur filme l'ennemi
                                   // il est mis a jour dans le script CameraRaycast, lorsqu'un raycast entre en colision avec l'ennemi
+    public float coolDownTime;
 
     private int currentScore;
+    private float currentCD;
     private RaycastHit hit;
     private Ray ray;
-    private float coolDown;
     private StorageBar storageBar;
 
     public void SetStorageBar(StorageBar _sb)
@@ -22,14 +23,14 @@ public class Score : MonoBehaviour
     private void Awake()
     {
         currentScore = 0;
-        coolDown = 1.5f;
+        currentCD = coolDownTime;
     }
     
     void Update()
     {
         if (IsFilmingEnnemy)
         {
-            if (coolDown <= 0.0f)
+            if (currentCD <= 0.0f)
             {
                 currentScore += 1;
                 storageBar.SetStorage(currentScore,winScore);
@@ -40,10 +41,10 @@ public class Score : MonoBehaviour
                     StartCoroutine(PlayerUI.Notify("You Won !", 2f));
                     Time.timeScale = 0f;
                 }
-                coolDown = 1.5f;
+                currentCD = coolDownTime;
             }
             else
-                coolDown -= Time.deltaTime; 
+                currentCD -= Time.deltaTime; 
         }
     }
 }
