@@ -16,13 +16,13 @@ public class CameraRaycast : MonoBehaviour
 
     void Update()
     {
-        Score.IsFilming = false;
+        Score.IsFilmingEnnemy = false;
         RaycastEnemies();
     }
 
     private void RaycastEnemies()
     {
-        if (!PlayerUI.CanFilm) // CanFilm est true lorsque le joueur a activé la caméra (voir PlayerUI.cs)
+        if (!PlayerUI.IsFilming) // CanFilm est true lorsque le joueur a activé la caméra (voir PlayerUI.cs)
             return;
 
         for (int j = -10; j < 10; j+=5)
@@ -35,7 +35,7 @@ public class CameraRaycast : MonoBehaviour
 
                 if (Physics.Raycast(ray, out hit, enemiesViewRange) && hit.collider.CompareTag("Enemy"))
                 {
-                    Score.IsFilming = true;
+                    Score.IsFilmingEnnemy = true;
                     return;
                 }
             }

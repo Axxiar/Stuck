@@ -11,7 +11,7 @@ using UnityEngine.UI;
 public class PlayerUI : NetworkBehaviour
 {
     public static bool GameIsPaused;
-    public static bool CanFilm = false;
+    public static bool IsFilming = false;
     public Animator transitionAnimator;
     public GameObject pauseMenuUI;
     public GameObject hudUI;
@@ -48,7 +48,7 @@ public class PlayerUI : NetworkBehaviour
             
             if (Input.GetKeyDown(KeyCode.Mouse1))
             {
-                CanFilm = !CanFilm;
+                IsFilming = !IsFilming;
                 transitionAnimator.SetTrigger("Fade");
             }
             if (Input.GetKeyDown(KeyCode.I))
@@ -161,8 +161,8 @@ public class PlayerUI : NetworkBehaviour
         hudUI.SetActive(false);
         itemsMenu.SetActive(false);
         tabMenu.SetActive(false);
-        if (CanFilm)
-            CanFilm = false;
+        if (IsFilming)
+            IsFilming = false;
         camUI.SetActive(false);
         
     }

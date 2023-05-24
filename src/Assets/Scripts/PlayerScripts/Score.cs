@@ -6,7 +6,7 @@ using UnityEngine;
 public class Score : MonoBehaviour
 {
     public int winScore;
-    public static bool IsFilming; // booléen qui permet de vérifier si le joueur filme l'ennemi
+    public static bool IsFilmingEnnemy; // booléen qui permet de vérifier si le joueur filme l'ennemi
                                   // il est mis a jour dans le script CameraRaycast, lorsqu'un raycast entre en colision avec l'ennemi
 
     private int currentScore;
@@ -27,7 +27,7 @@ public class Score : MonoBehaviour
     
     void Update()
     {
-        if (IsFilming)
+        if (IsFilmingEnnemy)
         {
             if (coolDown <= 0.0f)
             {
