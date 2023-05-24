@@ -7,10 +7,10 @@ public class CameraBattery : MonoBehaviour
 {
     public static bool IsCamBatteryEmpty; 
     public float coolDownTime;
-    public float currentBatteryPercent;
         
     private CamBatteryBar camBatteryBar;
     private float coolDown;
+    private float currentBatteryPercent;
     public void SetCamBatteryBar(CamBatteryBar _cbb)
     {
         camBatteryBar = _cbb;
@@ -24,6 +24,30 @@ public class CameraBattery : MonoBehaviour
 
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            if (Inventory.BatteriesCount == 0)
+                StartCoroutine(PlayerUI.Notify("You do not have batteries", 1.5f));
+            else
+            {
+                if (currentBatteryPercent > 66f)
+                {
+                    StartCoroutine(PlayerUI.Notify("Your battery is already full ", 1.5f));
+                }
+                else
+                {
+                    IsCamBatteryEmpty = false;
+                    Inventory.BatteriesCount--;
+                    if (Math.Abs(currentBatteryPercent - 66f) < 0.01f)
+                        currentBatteryPercent = 100f;
+                    else
+                    {
+                        currentBatteryPercent += 34f;    
+                    }
+                    camBatteryBar.SetCameraBattery(currentBatteryPercent);
+                }
+            }
+        }
         if (PlayerUI.IsCameraOn)
         {
             if (coolDown <= 0.0f)
