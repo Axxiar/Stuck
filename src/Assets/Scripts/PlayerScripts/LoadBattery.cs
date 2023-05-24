@@ -28,7 +28,7 @@ public class LoadBattery : MonoBehaviour
                      {
                          _cameraBattery.currentBatteryPercent += 34f;    
                      }
-
+                     
 
                  }
              }
