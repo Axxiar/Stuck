@@ -23,6 +23,7 @@ public class PlayerUI : NetworkBehaviour
     private GameObject tabMenu;
 
     [SerializeField] private GameObject itemsMenu;
+    public CamBatteryBar batterySlider;
     public Sprite batterySprite;
     public List<GameObject> items;
     private void Start()
@@ -140,8 +141,8 @@ public class PlayerUI : NetworkBehaviour
         pauseMenuUI.SetActive(true);
         //on débloque le curseur
         Cursor.lockState = CursorLockMode.None;
-
         GameIsPaused = true;
+        batterySlider.SetCameraBattery(CameraBattery.CurrentBatteryPercent);
     }
     public void QuitGame()
     {

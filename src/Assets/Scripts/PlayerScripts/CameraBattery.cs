@@ -6,11 +6,12 @@ using UnityEngine;
 public class CameraBattery : MonoBehaviour
 {
     public static bool IsCamBatteryEmpty; 
-    public float coolDownTime;
+    public static float CurrentBatteryPercent;
         
+    public float coolDownTime;
+    
     private CamBatteryBar camBatteryBar;
     private float coolDown;
-    private float currentBatteryPercent;
     public void SetCamBatteryBar(CamBatteryBar _cbb)
     {
         camBatteryBar = _cbb;
@@ -19,7 +20,7 @@ public class CameraBattery : MonoBehaviour
     void Start()
     {
         coolDown = coolDownTime;
-        currentBatteryPercent = 100f;
+        CurrentBatteryPercent = 100f;
     }
 
     void Update()
@@ -30,7 +31,7 @@ public class CameraBattery : MonoBehaviour
                 StartCoroutine(PlayerUI.Notify("You do not have batteries", 2f));
             else
             {
-                if (currentBatteryPercent > 66f)
+                if (CurrentBatteryPercent > 66f)
                 {
                     StartCoroutine(PlayerUI.Notify("Your battery is already full ", 2f));
                 }
@@ -38,13 +39,13 @@ public class CameraBattery : MonoBehaviour
                 {
                     IsCamBatteryEmpty = false;
                     Inventory.BatteriesCount--;
-                    if (Math.Abs(currentBatteryPercent - 66f) < 0.01f)
-                        currentBatteryPercent = 100f;
+                    if (Math.Abs(CurrentBatteryPercent - 66f) < 0.01f)
+                        CurrentBatteryPercent = 100f;
                     else
                     {
-                        currentBatteryPercent += 34f;    
+                        CurrentBatteryPercent += 34f;    
                     }
-                    camBatteryBar.SetCameraBattery(currentBatteryPercent);
+                    camBatteryBar.SetCameraBattery(CurrentBatteryPercent);
                 }
             }
         }
@@ -52,10 +53,10 @@ public class CameraBattery : MonoBehaviour
         {
             if (coolDown <= 0.0f)
             {
-                currentBatteryPercent -= 34f;
-                camBatteryBar.SetCameraBattery(currentBatteryPercent);
+                CurrentBatteryPercent -= 34f;
+                camBatteryBar.SetCameraBattery(CurrentBatteryPercent);
                 
-                if (currentBatteryPercent <= 0.0f)
+                if (CurrentBatteryPercent <= 0.0f)
                 {
                     StartCoroutine(PlayerUI.Notify("Camera is discharged", 2f));
                     

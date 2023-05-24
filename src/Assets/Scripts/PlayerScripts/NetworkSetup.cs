@@ -45,9 +45,13 @@ public class NetworkSetup : NetworkBehaviour
             GetComponentInChildren<Health>().SetHealthBar(playerHB);
             StorageBar playerSB = playerUIInstance.GetComponentInChildren<StorageBar>(includeInactive:true);
             GetComponentInChildren<Score>().SetStorageBar(playerSB);
-            CamBatteryBar playerCBB = playerUIInstance.GetComponentInChildren<CamBatteryBar>(includeInactive: true);
-            Debug.Log(playerCBB);
+            
+            // il y a 2 éléments CamBatteryBar dans l'ui, le premier se situe dans le menue Pause, le second est dans l'ui de la caméra. 
+            // Ici, on veut récupérer seulement le 2ème (celui de l'ui de la caméra)
+            CamBatteryBar playerCBB = playerUIInstance.GetComponentsInChildren<CamBatteryBar>(includeInactive: true)[1];
             GetComponentInChildren<CameraBattery>().SetCamBatteryBar(playerCBB);
+            
+            
             // on lui donne son nom
             string username = UserAccountManager.LoggedInUsername;
             CmdSetUsername(transform.name, username);
