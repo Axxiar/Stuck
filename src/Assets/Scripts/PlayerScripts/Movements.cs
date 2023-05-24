@@ -26,10 +26,13 @@ public class Movements : MonoBehaviour
     Vector2 _currentVelocity = Vector2.zero;
     private float _velocityY;
     float _currentSpeed;
-    
+
     private void Start()
     {
+       
         controller = GetComponent<CharacterController>();
+        
+
     }
 
     void Update()
@@ -40,6 +43,7 @@ public class Movements : MonoBehaviour
             controller.Move(Vector3.zero);
             return;
         }
+        
         
         // gestion des différentes vitesses de déplacement
         //fast
