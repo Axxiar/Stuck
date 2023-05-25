@@ -11,7 +11,6 @@ public class MonsterController : MonoBehaviour
     private const string walk_state = "Walk";
     private const string attack_state = "Attack";
     private static bool isPlayerWhistling;
-    public int dmg;
 
 
     private GameObject[] targetsPlayers;
@@ -61,8 +60,7 @@ public class MonsterController : MonoBehaviour
             //Si pas de cible, ne fait rien
             if (currentTarget == null)
             {
-                ResetAnimation();
-                _animator.SetBool(walk_state,true);
+                Walk();
                 if (navMeshAgent.remainingDistance <= navMeshAgent.stoppingDistance) //done with path
                 {
                     Vector3 point;
@@ -81,7 +79,9 @@ public class MonsterController : MonoBehaviour
                     Attack();
                 }
                 else
-                {      _animator.SetBool(walk_state, true);
+                {       
+                    Debug.Log(currentTarget.gameObject.name + " fsdffsd !"); 
+                    Walk();
                     MovingToTarget(randomPlayer);
                 }
             }
@@ -92,10 +92,19 @@ public class MonsterController : MonoBehaviour
     {
         currentTarget.GetComponent<Health>().TakeDamage(_dmg);
     }
+    void Walk()
+    {
+        ResetAnimation();
+        currentAction = walk_state;
+        _animator.SetBool(walk_state, true);
+       
+    }
     void Attack()
     {
         ResetAnimation();
+        currentAction = attack_state;
         _animator.SetBool(attack_state, true);
+       
     }
 
   

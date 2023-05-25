@@ -60,8 +60,7 @@ public class ClownController : MonoBehaviour
             //Si pas de cible, ne fait rien
             if (currentTarget == null)
             {
-                ResetAnimation();
-                _animator.SetBool(walk_state,true);
+                Walk();
                 if (navMeshAgent.remainingDistance <= navMeshAgent.stoppingDistance) //done with path
                 {
                     Vector3 point;
@@ -92,9 +91,19 @@ public class ClownController : MonoBehaviour
     {
         currentTarget.GetComponent<Health>().TakeDamage(_dmg);
     }
+   
+    
+    void Walk()
+    {
+        ResetAnimation();
+        currentAction = walk_state;
+        _animator.SetBool(walk_state, true);
+       
+    }
     void Attack()
     {
         ResetAnimation();
+        currentAction = attack_state;
         _animator.SetBool(attack_state, true);
        
     }
@@ -102,6 +111,7 @@ public class ClownController : MonoBehaviour
     public void Run()
     {
         ResetAnimation();
+        currentAction = run_state;
         _animator.SetBool(run_state,true);
     }
 
