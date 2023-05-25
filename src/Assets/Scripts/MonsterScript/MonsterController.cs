@@ -11,6 +11,8 @@ public class MonsterController : MonoBehaviour
     private const string walk_state = "Walk";
     private const string attack_state = "Attack";
     private static bool isPlayerWhistling;
+    public int dmg;
+
 
     private GameObject[] targetsPlayers;
     //private bool istargetfound = false;
@@ -79,7 +81,7 @@ public class MonsterController : MonoBehaviour
                     Attack();
                 }
                 else
-                {       _animator.SetBool(walk_state, true);
+                {      _animator.SetBool(walk_state, true);
                     MovingToTarget(randomPlayer);
                 }
             }

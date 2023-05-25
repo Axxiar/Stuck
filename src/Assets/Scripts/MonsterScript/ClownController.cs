@@ -96,6 +96,7 @@ public class ClownController : MonoBehaviour
     {
         ResetAnimation();
         _animator.SetBool(attack_state, true);
+       
     }
 
     public void Run()
