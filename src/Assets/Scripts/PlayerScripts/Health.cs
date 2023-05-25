@@ -25,7 +25,7 @@ public class Health : MonoBehaviour
         healthBar.SetHealth(health,maxHealth);
         if (health <= 0.0f) 
         {
-            StartCoroutine(PlayerUI.Notify("You Won !", 2f));
+            StartCoroutine(PlayerUI.Notify("You lost !", 2f));
             Time.timeScale = 0f;
         }
     }
