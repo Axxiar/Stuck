@@ -151,13 +151,11 @@ public class PlayerUI : NetworkBehaviour
         // ssi le joueur n'est pas l'hote on coupe le client
         if (isClientOnly)
         {
-            Debug.Log("Client coupé");
             networkManager.StopClient();
         }
         // si c'est l'hote on coupe client + serveur
         else
         {
-            Debug.Log("Serveur coupé");
             networkManager.StopHost();
         }
     }

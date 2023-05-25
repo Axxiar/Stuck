@@ -383,6 +383,10 @@ PrefabInstance:
       propertyPath: offlineScene
       value: Assets/Scenes/LoginScene.unity
       objectReference: {fileID: 0}
+    - target: {fileID: 8747533753102606273, guid: 31271db25c87142499048185b93c3726, type: 3}
+      propertyPath: playerPrefab
+      value: 
+      objectReference: {fileID: 960091783704507620, guid: e23e3028dd801c241989856a219349b0, type: 3}
     - target: {fileID: 8747533753102606274, guid: 31271db25c87142499048185b93c3726, type: 3}
       propertyPath: statisticsGUI
       value: 0

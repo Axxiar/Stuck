@@ -34,7 +34,6 @@ public class Score : MonoBehaviour
             {
                 currentScore += 1;
                 storageBar.SetStorage(currentScore,winScore);
-                Debug.Log(currentScore);
                 
                 if (currentScore >= winScore)
                 {

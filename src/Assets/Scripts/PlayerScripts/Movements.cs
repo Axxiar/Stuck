@@ -1,12 +1,16 @@
 using System;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.Serialization;
 
 public class Movements : MonoBehaviour
 {
+
+
     // controller du charcter du joueur;
     public CharacterController controller;
-
+    public Animator playerAnimator;
+    
     // Vitesse de marche lente
     public float slowWalkSpeed = 3.0f;
     // Vitesse de marche
@@ -27,12 +31,12 @@ public class Movements : MonoBehaviour
     private float _velocityY;
     float _currentSpeed;
 
+    private float animHorizontal;
+    private float animVertical;
+
     private void Start()
     {
-       
         controller = GetComponent<CharacterController>();
-        
-
     }
 
     void Update()
@@ -48,23 +52,39 @@ public class Movements : MonoBehaviour
         // gestion des différentes vitesses de déplacement
         //fast
         if (Input.GetKey(KeyCode.LeftShift))
+        {
             _currentSpeed = runSpeed;
+            animHorizontal = 5.5f;
+            animVertical = 5.5f;
+        }
         //slow
         else if (Input.GetKey(KeyCode.LeftControl))
+        {
             _currentSpeed = slowWalkSpeed;
+            animHorizontal = 4f;
+            animVertical = 4f;
+        }
         //normal
         else
+        {
             _currentSpeed = walkSpeed;
+            animHorizontal = 2f;
+            animVertical = 2f;
+        }
         
         // récup des directions
         Vector2 targetDir = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+        
         
         // normalisation du vecteur pour que sa longueur soit toujours 1 même en diagonal
         targetDir.Normalize();
 
         // smooth du déplacement (uniquement axe z et x)
         _currentDir = Vector2.SmoothDamp(_currentDir, targetDir, ref _currentVelocity, moveSmoothness);
-
+        
+        playerAnimator.SetFloat("X_Velocity", animHorizontal * targetDir.x);
+        playerAnimator.SetFloat("Y_Velocity", animVertical * targetDir.y);
+        
         // si saut
         // if (controller.isGrounded && Input.GetButtonDown("Jump"))
         if (controller.isGrounded)

@@ -11,7 +11,9 @@ public class MouseLook : MonoBehaviour
     // Sensibilité horizontale de la souris
     public float mouseXSensivity = 70.0f;
     // 
-    [Range(0.0f, 0.3f)] public float mouseSmoothness = 0.07f;
+    [Range(0.0f, 0.1f)] public float mouseSmoothness;
+
+    public Transform torch;
     
     // Valeur de la rotation sur l'axe X (haut en bas)
     private float _xRotation;
@@ -43,10 +45,12 @@ public class MouseLook : MonoBehaviour
         // update de la rotation verticale (-= car l'axe est inversé par défaut)
         _xRotation -= _currentMouseDelta.y;
         // bloque la rotation verticale entre -90 et 90
-        _xRotation = Math.Clamp(_xRotation, -90f, 90f);
+        _xRotation = Math.Clamp(_xRotation, -70f, 70f);
         
         // update des rotations
-        transform.localRotation = Quaternion.Euler(_xRotation, 0f ,0f); // ici on fait tourner la caméra
+        transform.localRotation = Quaternion.Euler(_xRotation, 0f ,0f); // ici on fait tourner la caméra (axe vertical)
+        torch.localRotation = Quaternion.Euler(_xRotation, 0f, 0f); // rotation de la torche (axe vertical)
+
         playerBody.Rotate(Vector3.up * _currentMouseDelta.x); // ici le joueur directement (quand il regarde à gauche/droite, ça fait tourner son corps directement)
     }
 }

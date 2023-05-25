@@ -9,7 +9,6 @@ public class CamBatteryBar : MonoBehaviour
 
     public void SetCameraBattery(float percentage)
     {
-        Debug.Log("Camera battery is at " + percentage/100f);
         slider.value = percentage / 100f;
     }
 }

@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Tests Alexis.unity
     guid: 5aadaf9b1ed067c4a8634118a0180dd2
+  - enabled: 0
+    path: Assets/Scenes/Test Ynou.unity
+    guid: daade8c0df4039b4cb5aff82e85d705c
   m_configObjects: {}
