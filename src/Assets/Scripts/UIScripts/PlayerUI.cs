@@ -126,7 +126,7 @@ public class PlayerUI : NetworkBehaviour
         //on affiche le HUD
         hudUI.SetActive(true);
         //on defreeze le jeu
-        Time.timeScale = 1f;
+        // Time.timeScale = 1f;
         //on bloque le curseur
         Cursor.lockState = CursorLockMode.Locked;
 
@@ -135,7 +135,7 @@ public class PlayerUI : NetworkBehaviour
     public void PauseGame()
     {
         //on freeze le jeu
-        Time.timeScale = 0f;
+        // Time.timeScale = 0f;
         HideMenus(true, false, true, true, true,true);
         //on affiche le menu pause
         pauseMenuUI.SetActive(true);
@@ -146,7 +146,7 @@ public class PlayerUI : NetworkBehaviour
     }
     public void QuitGame()
     {
-        Time.timeScale = 1f;
+        // Time.timeScale = 1f;
         GameIsPaused = false;
         // ssi le joueur n'est pas l'hote on coupe le client
         if (isClientOnly)

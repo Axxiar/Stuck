@@ -148,12 +148,13 @@ GameObject:
   - component: {fileID: 8566138940668020744}
   - component: {fileID: 7834960481568758211}
   - component: {fileID: 199261248630179642}
-  - component: {fileID: -7756468257687343761}
   - component: {fileID: -6885735536185863539}
+  - component: {fileID: -7756468257687343761}
   - component: {fileID: 6354087685360415769}
   - component: {fileID: -7347552183901448456}
   - component: {fileID: 2426522828825295725}
   - component: {fileID: 3386679792516339763}
+  - component: {fileID: 1739507926104527756}
   m_Layer: 2
   m_Name: Player Test
   m_TagString: Player
@@ -231,7 +232,7 @@ MonoBehaviour:
   runSpeed: 12
   jumpHeight: 7
   gravity: -25.62
-  moveSmoothness: 0.2
+  moveSmoothness: 0.15
 --- !u!114 &8566138940668020744
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -244,8 +245,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1129796ebb8ab3b4596aad8aac4045db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  winScore: 10
-  coolDownTime: 0
+  winScore: 25
+  coolDownTime: 3
 --- !u!114 &7834960481568758211
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -276,6 +277,19 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 462dbc1cfb7ffcc41a9442a1b00afb31, type: 3}
   - {fileID: 8300000, guid: 90f7764360706554ab4f4ae6ccd2bfd2, type: 3}
   whistleCoolDown: 10
+--- !u!114 &-6885735536185863539
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 960091783704507620}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c3052bad4e115941b72b79738052bab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  coolDownTime: 60
 --- !u!114 &-7756468257687343761
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -297,20 +311,11 @@ MonoBehaviour:
   - {fileID: 960091783057153970}
   - {fileID: 960091783057153971}
   - {fileID: 199261248630179642}
+  - {fileID: 614354685390566192}
+  - {fileID: -6885735536185863539}
+  - {fileID: 8566138940668020744}
   playerUIPrefab: {fileID: 3433715808206939683, guid: 5bf14d878177faf47995b31c181d28ff, type: 3}
---- !u!114 &-6885735536185863539
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 960091783704507620}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c3052bad4e115941b72b79738052bab, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  coolDownTime: 1.5
+  playerGraphics: {fileID: 6360504172065065656}
 --- !u!82 &6354087685360415769
 AudioSource:
   m_ObjectHideFlags: 0
@@ -482,6 +487,23 @@ MonoBehaviour:
   compressRotation: 0
   positionPrecision: 0.01
   scalePrecision: 0.01
+--- !u!114 &1739507926104527756
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 960091783704507620}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f6f3bf89aa97405989c802ba270f815, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncDirection: 1
+  syncMode: 0
+  syncInterval: 0.1
+  clientAuthority: 1
+  animator: {fileID: 2668705971905853123}
 --- !u!1 &7190554189346930309
 GameObject:
   m_ObjectHideFlags: 0
@@ -598,7 +620,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -9200210366883936642, guid: fd48e8b0fb442eb498bf4567ef3ad543, type: 3}
       propertyPath: m_Layer
-      value: 6
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: fd48e8b0fb442eb498bf4567ef3ad543, type: 3}
       propertyPath: m_RootOrder
@@ -646,23 +668,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -6687504106412162394, guid: fd48e8b0fb442eb498bf4567ef3ad543, type: 3}
       propertyPath: m_Layer
-      value: 6
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -6452266432751415832, guid: fd48e8b0fb442eb498bf4567ef3ad543, type: 3}
       propertyPath: m_Layer
-      value: 6
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -3286910004361259421, guid: fd48e8b0fb442eb498bf4567ef3ad543, type: 3}
       propertyPath: m_Layer
-      value: 6
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -2496332547428783936, guid: fd48e8b0fb442eb498bf4567ef3ad543, type: 3}
       propertyPath: m_Layer
-      value: 6
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 635547659545568360, guid: fd48e8b0fb442eb498bf4567ef3ad543, type: 3}
       propertyPath: m_Layer
-      value: 6
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: fd48e8b0fb442eb498bf4567ef3ad543, type: 3}
       propertyPath: m_Name
@@ -670,7 +692,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6657560127643677590, guid: fd48e8b0fb442eb498bf4567ef3ad543, type: 3}
       propertyPath: m_Layer
-      value: 6
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fd48e8b0fb442eb498bf4567ef3ad543, type: 3}
