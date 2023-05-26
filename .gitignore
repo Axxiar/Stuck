@@ -3,7 +3,7 @@
 /[Ss]ite/
 /src/.idea/
 /docs/prepros.config
-
+/src/Assets/Scenes/MainTemp*
 
 # This .gitignore file should be placed at the root of your Unity project directory
 #

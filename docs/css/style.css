@@ -436,7 +436,7 @@ section .container {
   background-color: #4a0000;
 }
 .techs .icons .item svg:hover, .techs .icons .git-item svg:hover, .techs .icons .web-item svg:hover {
-  cursor: pointer;
+  cursor: help;
 }
 .techs .icons .item svg {
   height: 60%;
