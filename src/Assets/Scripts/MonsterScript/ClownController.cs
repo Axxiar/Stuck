@@ -12,7 +12,6 @@ public class ClownController : MonoBehaviour
     private const string run_state = "Run";
     private const string attack_state = "Attack";
     private static bool isPlayerWhistling;
-
     private GameObject[] targetsPlayers;
     //private bool istargetfound = false;
 
@@ -37,12 +36,13 @@ public class ClownController : MonoBehaviour
 
 
     private void Start()
-    {
+    { 
         currentAction = walk_state;
         _animator = GetComponent<Animator>();
         //Référence NavMeshAgent
         navMeshAgent = GetComponent<NavMeshAgent>();
     }
+    
 
     private void Update()
     {
@@ -72,6 +72,7 @@ public class ClownController : MonoBehaviour
             }
             else
             {
+                
                 float distance = Vector3.Distance(transform.position, currentTarget.transform.position);
                 if (distance <= navMeshAgent.stoppingDistance)
                 {
