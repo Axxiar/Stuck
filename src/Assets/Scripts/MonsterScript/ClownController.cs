@@ -6,7 +6,9 @@ using Random = UnityEngine.Random;
 public class ClownController : MonoBehaviour
 {
     Animator _animator;
-    public float speed = 10f;
+    private float speed ;
+    public float runspeed = 10f;
+    public float walkspeed = 5f;
     public float minDistance = 2.0f;
     private const string walk_state = "Walk";
     private const string run_state = "Run";
@@ -38,6 +40,7 @@ public class ClownController : MonoBehaviour
     private void Start()
     { 
         currentAction = walk_state;
+        speed = walkspeed;
         _animator = GetComponent<Animator>();
         //Référence NavMeshAgent
         navMeshAgent = GetComponent<NavMeshAgent>();
@@ -97,6 +100,7 @@ public class ClownController : MonoBehaviour
     void Walk()
     {
         ResetAnimation();
+        speed = walkspeed;
         currentAction = walk_state;
         _animator.SetBool(walk_state, true);
        
@@ -112,6 +116,7 @@ public class ClownController : MonoBehaviour
     public void Run()
     {
         ResetAnimation();
+        speed = runspeed;
         currentAction = run_state;
         _animator.SetBool(run_state,true);
     }

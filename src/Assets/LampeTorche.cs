@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class LampeTorche : MonoBehaviour
 {
-    public GameObject light;
-    public bool isOn;
 
     // Start is called before the first frame update
     void Start()
@@ -19,10 +17,10 @@ public class LampeTorche : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
-            isOn = !isOn;
+            GetComponent<Light>().enabled = !GetComponent<Light>().enabled;
         }
 
-        light.SetActive(isOn);
+      
         
     }
 }
