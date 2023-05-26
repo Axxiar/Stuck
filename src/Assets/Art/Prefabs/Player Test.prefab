@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 960091783057153971}
   - component: {fileID: 960091783057153972}
   - component: {fileID: 4763920570038678550}
-  - component: {fileID: 8612410948602251902}
+  - component: {fileID: 2490080623683728194}
   m_Layer: 0
   m_Name: Player Camera
   m_TagString: Untagged
@@ -118,7 +118,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemiesViewRange: 35
   itemsViewRange: 6.5
---- !u!114 &8612410948602251902
+--- !u!114 &2490080623683728194
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -289,7 +289,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c3052bad4e115941b72b79738052bab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coolDownTime: 60
+  coolDownTime: 30
 --- !u!114 &-7756468257687343761
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -314,6 +314,8 @@ MonoBehaviour:
   - {fileID: 614354685390566192}
   - {fileID: -6885735536185863539}
   - {fileID: 8566138940668020744}
+  - {fileID: 2490080623683728194}
+  - {fileID: 4763920570038678550}
   playerUIPrefab: {fileID: 3433715808206939683, guid: 5bf14d878177faf47995b31c181d28ff, type: 3}
   playerGraphics: {fileID: 6360504172065065656}
 --- !u!82 &6354087685360415769
