@@ -180,7 +180,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh24352
+  m_Name: pb_Mesh160052
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -3195,7 +3195,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh24250
+  m_Name: pb_Mesh148310
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -4034,6 +4034,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Battery
       objectReference: {fileID: 0}
+    - target: {fileID: 2253570326579259237, guid: 39dad269bc4b31e4baade8a3a4dc6cb4, type: 3}
+      propertyPath: sceneId
+      value: 4082260950
+      objectReference: {fileID: 0}
     - target: {fileID: 8747666670293151052, guid: 39dad269bc4b31e4baade8a3a4dc6cb4, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -4656,6 +4660,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Battery (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 2253570326579259237, guid: 39dad269bc4b31e4baade8a3a4dc6cb4, type: 3}
+      propertyPath: sceneId
+      value: 41929913
+      objectReference: {fileID: 0}
     - target: {fileID: 8747666670293151052, guid: 39dad269bc4b31e4baade8a3a4dc6cb4, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -4709,9 +4717,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 864148088742084288, guid: 39dad269bc4b31e4baade8a3a4dc6cb4, type: 3}
+      propertyPath: syncDirection
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1306998557992296855, guid: 39dad269bc4b31e4baade8a3a4dc6cb4, type: 3}
       propertyPath: m_Name
       value: Battery (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2253570326579259237, guid: 39dad269bc4b31e4baade8a3a4dc6cb4, type: 3}
+      propertyPath: sceneId
+      value: 3711505918
       objectReference: {fileID: 0}
     - target: {fileID: 8747666670293151052, guid: 39dad269bc4b31e4baade8a3a4dc6cb4, type: 3}
       propertyPath: m_RootOrder
@@ -5703,6 +5719,10 @@ PrefabInstance:
     - target: {fileID: 1306998557992296855, guid: 39dad269bc4b31e4baade8a3a4dc6cb4, type: 3}
       propertyPath: m_Name
       value: Battery (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2253570326579259237, guid: 39dad269bc4b31e4baade8a3a4dc6cb4, type: 3}
+      propertyPath: sceneId
+      value: 2522925338
       objectReference: {fileID: 0}
     - target: {fileID: 8747666670293151052, guid: 39dad269bc4b31e4baade8a3a4dc6cb4, type: 3}
       propertyPath: m_RootOrder
@@ -8650,6 +8670,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Battery (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 2253570326579259237, guid: 39dad269bc4b31e4baade8a3a4dc6cb4, type: 3}
+      propertyPath: sceneId
+      value: 3185814464
+      objectReference: {fileID: 0}
     - target: {fileID: 8747666670293151052, guid: 39dad269bc4b31e4baade8a3a4dc6cb4, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -8706,6 +8730,10 @@ PrefabInstance:
     - target: {fileID: 1306998557992296855, guid: 39dad269bc4b31e4baade8a3a4dc6cb4, type: 3}
       propertyPath: m_Name
       value: Battery (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2253570326579259237, guid: 39dad269bc4b31e4baade8a3a4dc6cb4, type: 3}
+      propertyPath: sceneId
+      value: 672288806
       objectReference: {fileID: 0}
     - target: {fileID: 8747666670293151052, guid: 39dad269bc4b31e4baade8a3a4dc6cb4, type: 3}
       propertyPath: m_RootOrder

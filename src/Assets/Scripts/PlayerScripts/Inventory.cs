@@ -1,5 +1,6 @@
 
 using System;
+using Mirror;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -22,33 +23,44 @@ public class Inventory : MonoBehaviour
         {
             return;
         }
-        RaycastHit hit;
         
         Debug.DrawRay(transform.position, transform.forward*pickupRange, Color.red);
-
-        if (Physics.Raycast(transform.position, transform.forward, out hit, pickupRange) && hit.transform.CompareTag("Item"))
+        if (Input.GetKeyDown(KeyCode.Mouse0))
         {
-            if (Input.GetKeyDown(KeyCode.Mouse0))
+            RaycastHit hit;
+            if (Physics.Raycast(transform.position, transform.forward, out hit, pickupRange) && hit.transform.CompareTag("Item"))
             {
-                if (BatteriesCount < maxItemCount)
-                {
-                    BatteriesCount += 1;
-                    Destroy(hit.transform.gameObject);
-                }
-                else
-                {
-                    StartCoroutine(PlayerUI.Notify("You already have 5 batteries", 1.5f));
-                }
+                CollectBattery(hit);
             }
+            else
+            {
+                DropBattery();
+            }
+        }
+    }
+
+    private void CollectBattery(RaycastHit target)
+    {
+        if (BatteriesCount < maxItemCount)
+        {
+            BatteriesCount += 1;
+            Destroy(target.transform.gameObject);
+            // NetworkServer.Destroy(target.transform.gameObject); // not working
         }
         else
         {
-            if (Input.GetKeyDown(KeyCode.Mouse0) && BatteriesCount > 0)
-            {
-                BatteriesCount -= 1;
-                GameObject batt = Instantiate(battery, transform.position + transform.forward * 2, Quaternion.Euler(Random.value * 180, 0, Random.value * 180));
-                batt.GetComponent<Rigidbody>().AddForce(transform.forward * 5 ,ForceMode.Impulse);
-            }
+            StartCoroutine(PlayerUI.Notify("You already have 5 batteries", 1.5f));
         }
+    }
+
+    private void DropBattery()
+    {
+        if (BatteriesCount > 0)
+        {
+            BatteriesCount -= 1;
+            GameObject batt = Instantiate(battery, transform.position + transform.forward * 2, Quaternion.Euler(Random.value * 180, 0, Random.value * 180));
+            batt.GetComponent<Rigidbody>().AddForce(transform.forward * 5 ,ForceMode.Impulse);
+            // NetworkServer.Spawn(batt); // not working
+        } 
     }
 }
