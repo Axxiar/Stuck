@@ -59,6 +59,9 @@ public class PlayerUI : NetworkBehaviour
                     IsCameraOn = !IsCameraOn;
                     // l'ui de la caméra est activé/desactivé à la fin de l'animation Fade
                     transitionAnimator.SetTrigger("Fade");
+                    
+                    // TODO : 
+                    // jouer un effet sonore pour bien indiquer qu'on sort la caméra
                 }
                 else
                 {
