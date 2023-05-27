@@ -3,7 +3,6 @@ using UnityEngine;
 public class CameraRaycast : MonoBehaviour
 {
     public float enemiesViewRange;
-    public float itemsViewRange;
     private GameObject camHUD;
 
     RaycastHit hit;
