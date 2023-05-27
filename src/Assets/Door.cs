@@ -35,7 +35,7 @@ public class Door : MonoBehaviour {
         isOpening = true;
         targetDoor.GetComponent<Animator>().Play("OpenDoor");
         yield return new WaitForSeconds(0.05f);
-        yield return new WaitForSeconds(5.0f);
+        yield return new WaitForSeconds(6.0f);
         targetDoor.GetComponent<Animator>().Play("Wait");
         isOpening = false;
     }
