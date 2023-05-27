@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 using Random = UnityEngine.Random;
@@ -71,6 +72,14 @@ public class ClownController : MonoBehaviour
                     {
                         navMeshAgent.SetDestination(point);
                     }
+                    else
+                    {
+                        Debug.Log("jsp ou je vais");
+                    }
+                }
+                else
+                {
+                    // StartCoroutine(CheckRemainingDistance());
                 }
             }
             else
@@ -91,6 +100,16 @@ public class ClownController : MonoBehaviour
         }
     }
 
+    private IEnumerator CheckRemainingDistance()
+    {
+        float firstRemaining = navMeshAgent.remainingDistance;
+        yield return new WaitForSeconds(5);
+        float secondRemaining = navMeshAgent.remainingDistance;
+        Debug.Log("first :"+firstRemaining + " / second :"+ secondRemaining);
+        Debug.Log(Math.Abs(firstRemaining-secondRemaining) );
+        Debug.Log(Math.Abs(firstRemaining-secondRemaining) < 5f );
+    }
+    
     public void DealDamage(int _dmg)
     {
         currentTarget.GetComponent<Health>().TakeDamage(_dmg);
