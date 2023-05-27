@@ -1,47 +1,42 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class Door : MonoBehaviour {
 
-    public float open = 100f;
-    public float range = 10f;
-
-    public GameObject door;
+    public float range = 7f;
     public bool isOpening = false;
-
     public Camera fpsCam;
+    
+    private GameObject door;
 
     // Update is called once per frame
     void Update() {
-        if (Input.GetKeyDown("h"))
+        if (PlayerUI.GameIsPaused)
         {
-            Shoot();
+            return;
         }
-    }
-
-    void Shoot ()
-    {
+        
         RaycastHit hit;
-        if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, range))
+        if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, range) && hit.transform.CompareTag("Doors"))
         {
-            Debug.Log(hit.transform.name);
-
-            Target target = hit.transform.GetComponent<Target>();
-            if (target != null)
+            StartCoroutine(PlayerUI.Notify("'H' - Open", .2f));
+            if (Input.GetKeyDown("h"))
             {
-                StartCoroutine(OpenDoor());
+                StartCoroutine(OpenDoor(hit.transform.gameObject));
             }
         }
+        
     }
 
-    IEnumerator OpenDoor()
+    IEnumerator OpenDoor(GameObject targetDoor)
     {
         isOpening = true;
-        door.GetComponent<Animator>().Play("OpenDoor");
+        targetDoor.GetComponent<Animator>().Play("OpenDoor");
         yield return new WaitForSeconds(0.05f);
         yield return new WaitForSeconds(5.0f);
-        door.GetComponent<Animator>().Play("Wait");
+        targetDoor.GetComponent<Animator>().Play("Wait");
         isOpening = false;
     }
 

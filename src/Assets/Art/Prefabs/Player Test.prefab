@@ -149,12 +149,12 @@ GameObject:
   - component: {fileID: 199261248630179642}
   - component: {fileID: -6885735536185863539}
   - component: {fileID: -7756468257687343761}
+  - component: {fileID: 799206879088791535}
   - component: {fileID: 6354087685360415769}
   - component: {fileID: -7347552183901448456}
   - component: {fileID: 2426522828825295725}
   - component: {fileID: 3386679792516339763}
   - component: {fileID: 1739507926104527756}
-  - component: {fileID: 799206879088791535}
   m_Layer: 2
   m_Name: Player Test
   m_TagString: Player
@@ -319,6 +319,21 @@ MonoBehaviour:
   - {fileID: 4763920570038678550}
   playerUIPrefab: {fileID: 3433715808206939683, guid: 5bf14d878177faf47995b31c181d28ff, type: 3}
   playerGraphics: {fileID: 6360504172065065656}
+--- !u!114 &799206879088791535
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 960091783704507620}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cbe94bafff9d98043b4583803089d1e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  range: 3.5
+  isOpening: 0
+  fpsCam: {fileID: 960091783057153970}
 --- !u!82 &6354087685360415769
 AudioSource:
   m_ObjectHideFlags: 0
@@ -507,23 +522,6 @@ MonoBehaviour:
   syncInterval: 0.1
   clientAuthority: 1
   animator: {fileID: 2668705971905853123}
---- !u!114 &799206879088791535
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 960091783704507620}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cbe94bafff9d98043b4583803089d1e6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  open: 100
-  range: 10
-  door: {fileID: 0}
-  isOpening: 0
-  fpsCam: {fileID: 960091783057153970}
 --- !u!1 &1542695744618724238
 GameObject:
   m_ObjectHideFlags: 0

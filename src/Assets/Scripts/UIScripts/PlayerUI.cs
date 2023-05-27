@@ -112,9 +112,13 @@ public class PlayerUI : NetworkBehaviour
     public static IEnumerator Notify(string message, float displayTime)
     {
         notification.SetActive(true);
-        notification.GetComponent<TextMeshProUGUI>().text = message;
-        yield return new WaitForSeconds(displayTime);
-        notification.SetActive(false);
+        if (notification.GetComponent<TextMeshProUGUI>().text != message)
+        {
+            notification.GetComponent<TextMeshProUGUI>().text = message;
+            yield return new WaitForSeconds(displayTime);
+            notification.SetActive(false);
+            notification.GetComponent<TextMeshProUGUI>().text = "";
+        }
     }
 
     public void SwitchToCamMod()
