@@ -35,8 +35,12 @@ public class ClownController : MonoBehaviour
     //Temps avant de perdre la cible
     public float delayLostTarget = 10f;
 
+    // temps max que l'ia peut rester bloquée contre un mur ou escalier avant de changer de direction
+    public float stuckMaxTime;
+    
     private float timeLostTarget = 0;
-
+    private Rigidbody rb;
+    private float stuckIteration = 0;
 
     private void Start()
     { 
@@ -72,19 +76,10 @@ public class ClownController : MonoBehaviour
                     {
                         navMeshAgent.SetDestination(point);
                     }
-                    else
-                    {
-                        Debug.Log("jsp ou je vais");
-                    }
-                }
-                else
-                {
-                    // StartCoroutine(CheckRemainingDistance());
                 }
             }
             else
             {
-                
                 float distance = Vector3.Distance(transform.position, currentTarget.transform.position);
                 if (distance <= navMeshAgent.stoppingDistance)
                 {
@@ -100,14 +95,30 @@ public class ClownController : MonoBehaviour
         }
     }
 
-    private IEnumerator CheckRemainingDistance()
+    private void OnCollisionStay(Collision collisionInfo)
     {
-        float firstRemaining = navMeshAgent.remainingDistance;
-        yield return new WaitForSeconds(5);
-        float secondRemaining = navMeshAgent.remainingDistance;
-        Debug.Log("first :"+firstRemaining + " / second :"+ secondRemaining);
-        Debug.Log(Math.Abs(firstRemaining-secondRemaining) );
-        Debug.Log(Math.Abs(firstRemaining-secondRemaining) < 5f );
+        if (collisionInfo.gameObject.CompareTag("Doors") || collisionInfo.gameObject.CompareTag("Stairs"))
+        {
+            stuckIteration += Time.deltaTime;
+            if (stuckIteration >= stuckMaxTime)
+            {
+                Debug.Log("Le clown était bloqué, changement de destination");
+                Vector3 point;
+                if (RandomPoint(navMeshAgent.transform.position, range, out point)) //pass in our centre point and radius of area
+                {
+                    navMeshAgent.SetDestination(point);
+                }
+                else
+                {
+                    Vector3 randomDirection = Random.insideUnitSphere * range + transform.position;
+                    NavMeshHit hit;
+                    NavMesh.SamplePosition(randomDirection, out hit, range, 1);
+                    Vector3 finalPosition = hit.position;
+                    navMeshAgent.SetDestination(finalPosition);
+                }
+                stuckIteration = 0;
+            }
+        }
     }
     
     public void DealDamage(int _dmg)
