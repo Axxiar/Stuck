@@ -800,11 +800,11 @@ PlayerSettings:
   apiCompatibilityLevel: 6
   activeInputHandler: 2
   windowsGamepadBackendHint: 0
-  cloudProjectId: 
+  cloudProjectId: d00c6118-eef0-41ee-8c38-f95bf4fe370f
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: 
-  organizationId: 
+  projectName: Stuck
+  organizationId: fortressconquest
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
   playerDataPath: 

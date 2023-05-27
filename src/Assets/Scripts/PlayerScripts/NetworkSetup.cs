@@ -12,10 +12,7 @@ public class NetworkSetup : NetworkBehaviour
 
     [SerializeField] private GameObject playerUIPrefab;
     private GameObject playerUIInstance;
-    public GameObject playerGraphics;
 
-    private string playerBodyLayerName = "Player Body";
-    
     private void Start()
     {
         // si le joueur n'est pas celui du client,
@@ -32,9 +29,6 @@ public class NetworkSetup : NetworkBehaviour
             // sinon, on lui desactive la camera principale
             sceneCamera = Camera.main;
             if (sceneCamera != null) sceneCamera.gameObject.SetActive(false);
-            
-            // désactivation de la partie graphique (local uniquement)
-            SetLayerRecursively(playerGraphics, LayerMask.NameToLayer(playerBodyLayerName));
             
             // création du UI du joueur (local uniquement)
             playerUIInstance = Instantiate(playerUIPrefab);
@@ -66,20 +60,6 @@ public class NetworkSetup : NetworkBehaviour
         }
     }
 
-    private void SetLayerRecursively(GameObject obj, int newLayer)
-    {
-        // on stop si on tombe sur la torche (elle doit rester visible pour le joueur)
-        if (obj.name == "Torch")
-        {
-            return;
-        }
-        obj.layer = newLayer;
-        foreach (Transform child in obj.transform)
-        {
-            SetLayerRecursively(child.gameObject,newLayer);
-        }
-    }
-
     [Command]
     private void CmdSetUsername(string playerID, string username)
     {
@@ -106,9 +86,10 @@ public class NetworkSetup : NetworkBehaviour
     {
         // on enlève son playerUI
         Destroy(playerUIInstance);
-        
+
         // on lui remet la caméra principale
-        if (sceneCamera != null) sceneCamera.gameObject.SetActive(true);
+        if (isLocalPlayer)
+            if (sceneCamera != null) sceneCamera.gameObject.SetActive(true);
 
         // on enlève le joueur de la liste des joueurs
         GameManager.UnRegisterPlayer(transform.name);
