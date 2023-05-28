@@ -118,7 +118,12 @@ public class ClownController : MonoBehaviour
 
     private void OnCollisionStay(Collision collisionInfo)
     {
-        if (collisionInfo.gameObject.CompareTag("Doors") || collisionInfo.gameObject.CompareTag("Stairs"))
+        if (collisionInfo.gameObject.CompareTag("Stairs"))
+        {
+            Debug.Log("J'suis sur les esca");
+            GetComponent<Rigidbody>().isKinematic = true;
+        }
+        else if (collisionInfo.gameObject.CompareTag("Doors"))
         {
             stuckIteration += Time.deltaTime;
             if (stuckIteration >= stuckMaxTime)
@@ -139,6 +144,10 @@ public class ClownController : MonoBehaviour
                 }
                 stuckIteration = 0;
             }
+        }
+        else if (GetComponent<Rigidbody>().isKinematic)
+        {
+            GetComponent<Rigidbody>().isKinematic = false;
         }
     }
     

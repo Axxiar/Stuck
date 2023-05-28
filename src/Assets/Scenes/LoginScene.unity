@@ -380,6 +380,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8747533753102606273, guid: 31271db25c87142499048185b93c3726, type: 3}
+      propertyPath: onlineScene
+      value: Assets/Scenes/MainTemp.unity
+      objectReference: {fileID: 0}
+    - target: {fileID: 8747533753102606273, guid: 31271db25c87142499048185b93c3726, type: 3}
       propertyPath: offlineScene
       value: Assets/Scenes/LoginScene.unity
       objectReference: {fileID: 0}
