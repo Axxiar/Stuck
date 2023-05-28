@@ -71,9 +71,13 @@ public class UserAccountManager : MonoBehaviour
     /// </summary>
     private void ManageAudiosOnStart()
     {
-        AudioSource menusAS = GameObject.Find("Menu Music").GetComponent<AudioSource>();
-        menusAS.loop = false;
-        menusAS.clip = null;
-        menusAS.PlayOneShot(startGameAudioClip);
+        GameObject menuGO = GameObject.Find("Menu Music");
+        if (menuGO is not null)
+        {
+            AudioSource menuAS = menuGO.GetComponent<AudioSource>();
+            menuAS.loop = false;
+            menuAS.clip = null;
+            menuAS.PlayOneShot(startGameAudioClip);
+        }
     }
 }
