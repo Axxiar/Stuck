@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.Services.Authentication;
 using Unity.Services.Core;
 using Unity.Services.Lobbies;
@@ -13,9 +14,10 @@ public class Lobby : MonoBehaviour
 
 
     private Unity.Services.Lobbies.Models.Lobby hostLobby;
+    private Unity.Services.Lobbies.Models.Lobby joinedLobby;
     private float heartBeatTimer;
 
-    public InputField playerName;
+    public TMP_InputField playerNameInputField;
 
 
     private async void Start()
@@ -34,7 +36,9 @@ public class Lobby : MonoBehaviour
 
     private void Update()
     {
-        
+        HandleLobbyHeartBeat();
+        HandleLobbyPollUpdate();
+
     }
 
     private async void HandleLobbyHeartBeat()
@@ -56,6 +60,26 @@ public class Lobby : MonoBehaviour
         await LobbyService.Instance.SendHeartbeatPingAsync(hostLobby.Id);
     }
 
+    private async void HandleLobbyPollUpdate()
+    {
+        if (hostLobby == null)
+        {
+            return;
+        }
+
+        heartBeatTimer -= Time.deltaTime;
+        if (heartBeatTimer > 0f)
+        {
+            return;
+        }
+
+        float heartBeatTimerMax = 2;
+        heartBeatTimer = heartBeatTimerMax;
+
+        Unity.Services.Lobbies.Models.Lobby lobby = await LobbyService.Instance.GetLobbyAsync(hostLobby.Id);
+        joinedLobby = lobby;
+    }
+    
 
     public async void CreateLobby(string lobbyName)
     {
@@ -110,7 +134,7 @@ public class Lobby : MonoBehaviour
     {
        try
        {
-            Unity.Services.Lobbies.Models.Lobby joinedLobby = await Lobbies.Instance.JoinLobbyByCodeAsync(lobbyCode);
+            joinedLobby = await Lobbies.Instance.JoinLobbyByCodeAsync(lobbyCode);
 
        } catch (LobbyServiceException e)
        {
@@ -130,5 +154,15 @@ public class Lobby : MonoBehaviour
         }
     }
 
+    private async void LeaveLobby()
+    {
+        try
+        {
+            await LobbyService.Instance.RemovePlayerAsync(joinedLobby.Id, AuthenticationService.Instance.PlayerId);
+        } catch (LobbyServiceException e)
+        {
+            Debug.Log(e);
+        }
+    }
     
 }
