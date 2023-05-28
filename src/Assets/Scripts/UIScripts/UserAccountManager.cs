@@ -8,6 +8,8 @@ public class UserAccountManager : MonoBehaviour
 
     public static string LoggedInUsername;
 
+    public AudioClip startGameAudioClip;
+
     private void Awake()
     {
         if (instance != null)
@@ -39,6 +41,7 @@ public class UserAccountManager : MonoBehaviour
         {
             return;
         }
+        ManageAudiosOnStart();
         NetworkManager.singleton.StartHost();
     }
 
@@ -60,5 +63,17 @@ public class UserAccountManager : MonoBehaviour
         NetworkManager.singleton.networkAddress = address;
         Debug.Log("Connecting to " + NetworkManager.singleton.networkAddress);
         NetworkManager.singleton.StartClient();
+        ManageAudiosOnStart();
+    }
+    
+    /// <summary>
+    /// Arrête la musique de fond + lance un effect sonore indiquant que la partie se lance
+    /// </summary>
+    private void ManageAudiosOnStart()
+    {
+        AudioSource menusAS = GameObject.Find("Menu Music").GetComponent<AudioSource>();
+        menusAS.loop = false;
+        menusAS.clip = null;
+        menusAS.PlayOneShot(startGameAudioClip);
     }
 }

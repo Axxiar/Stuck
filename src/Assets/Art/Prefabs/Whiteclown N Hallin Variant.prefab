@@ -147,6 +147,7 @@ MonoBehaviour:
   currentTarget: {fileID: 0}
   delayLostTarget: 10
   stuckMaxTime: 3
+  targetFoundAudioClip: {fileID: 8300000, guid: 2530b307788f14543aa2ecb2a61a33ae, type: 3}
 --- !u!195 &141848907
 NavMeshAgent:
   m_ObjectHideFlags: 0

@@ -37,6 +37,9 @@ public class ClownController : MonoBehaviour
 
     // temps max que l'ia peut rester bloquée contre un mur ou escalier avant de changer de direction
     public float stuckMaxTime;
+
+    public AudioClip targetFoundAudioClip;
+    private bool hasTriggeredAudio = false;
     
     private float timeLostTarget = 0;
     private Rigidbody rb;
@@ -88,6 +91,24 @@ public class ClownController : MonoBehaviour
                 }
                 else
                 {
+                    if (!hasTriggeredAudio)
+                    {
+                        AudioSource playerAS;
+                        foreach (GameObject player in targetsPlayers)
+                        {
+                            playerAS = player.GetComponent<AudioSource>();
+                            if (playerAS.isPlaying)
+                            {
+                                StartCoroutine(WaitToPlay(playerAS,targetFoundAudioClip));
+                            }
+                            else
+                            {
+                                playerAS.PlayOneShot(targetFoundAudioClip);
+                            }
+                        }
+
+                        hasTriggeredAudio = true;
+                    }
                     Run();
                     MovingToTarget(randomPlayer);
                 }
@@ -157,6 +178,12 @@ public class ClownController : MonoBehaviour
         isPlayerWhistling = value;
     }
 
+    private IEnumerator WaitToPlay(AudioSource playerAS,AudioClip clip)
+    {
+        yield return new WaitUntil(() => playerAS.isPlaying == false);
+        playerAS.PlayOneShot(clip);
+    }
+    
     private bool MovingToTarget(GameObject player)
     {
 
@@ -197,11 +224,10 @@ public class ClownController : MonoBehaviour
 
             if (timeLostTarget > delayLostTarget)
             {
+                hasTriggeredAudio = false;
                 timeLostTarget = 0;
                 currentTarget = null;
             }
-
-
             return;
         }
         currentTarget = null;

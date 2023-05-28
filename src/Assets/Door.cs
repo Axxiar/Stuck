@@ -1,13 +1,16 @@
 using System.Collections;
-using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
+
 
 public class Door : MonoBehaviour {
 
     public float range = 7f;
     public bool isOpening = false;
     public Camera fpsCam;
+    
+    public AudioSource playerAS;
+    public AudioClip[] doorOpenAudioClips;
+    public AudioClip doorClackAudioClip;
     
     private GameObject door;
 
@@ -32,10 +35,11 @@ public class Door : MonoBehaviour {
 
     IEnumerator OpenDoor(GameObject targetDoor)
     {
+        playerAS.PlayOneShot(doorOpenAudioClips[Random.Range(0,doorOpenAudioClips.Length)]);
         isOpening = true;
         targetDoor.GetComponent<Animator>().Play("OpenDoor");
-        yield return new WaitForSeconds(0.05f);
-        yield return new WaitForSeconds(6.0f);
+        yield return new WaitForSeconds(5.9f);
+        playerAS.PlayOneShot(doorClackAudioClip);
         targetDoor.GetComponent<Animator>().Play("Wait");
         isOpening = false;
     }

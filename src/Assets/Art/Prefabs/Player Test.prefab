@@ -334,6 +334,11 @@ MonoBehaviour:
   range: 3.5
   isOpening: 0
   fpsCam: {fileID: 960091783057153970}
+  playerAS: {fileID: 6354087685360415769}
+  doorOpenAudioClips:
+  - {fileID: 8300000, guid: 1fb67d73db088e54fab3286e971cae18, type: 3}
+  - {fileID: 8300000, guid: dcae84e3022c1fc46b99acf95f064e5a, type: 3}
+  doorClackAudioClip: {fileID: 8300000, guid: 74813798e2334b84286efc025acbfadb, type: 3}
 --- !u!82 &6354087685360415769
 AudioSource:
   m_ObjectHideFlags: 0
