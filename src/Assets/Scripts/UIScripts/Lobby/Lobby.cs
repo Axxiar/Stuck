@@ -22,16 +22,19 @@ public class Lobby : MonoBehaviour
 
     private async void Start()
     {
+
+        
         await UnityServices.InitializeAsync();
 
         AuthenticationService.Instance.SignedIn += () =>
         {
             Debug.Log("Signed In " + AuthenticationService.Instance.PlayerId);
         };
-        await AuthenticationService.Instance.SignInAnonymouslyAsync();
 
-        CreateLobby("f");
-        ListLobbies();
+        if (!AuthenticationService.Instance.IsSignedIn)
+            await AuthenticationService.Instance.SignInAnonymouslyAsync();
+
+
     }
 
     private void Update()

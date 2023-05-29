@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 fileFormatVersion: 2
 guid: 79b32a2278c09e64cb5e3daec72b4a69
 folderAsset: yes
@@ -6,3 +7,14 @@ DefaultImporter:
   userData: 
   assetBundleName: 
   assetBundleVariant: 
+||||||| 559a922
+=======
+fileFormatVersion: 2
+guid: e6513712d3bfbd54d9003b0e01c28a8e
+folderAsset: yes
+DefaultImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+>>>>>>> refs/remotes/origin/master
