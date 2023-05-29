@@ -5066,6 +5066,7 @@ MonoBehaviour:
   currentTarget: {fileID: 0}
   delayLostTarget: 10
   stuckMaxTime: 0
+  targetFoundAudioClip: {fileID: 0}
 --- !u!1 &1119718644
 GameObject:
   m_ObjectHideFlags: 0
