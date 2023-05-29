@@ -1,13 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Health : MonoBehaviour
 {
     public float maxHealth = 100f;
     
     private HealthBar healthBar;
-    private float health;
+    public float health;
     public void SetHealthBar(HealthBar _hb)
     {
         healthBar = _hb;
@@ -25,10 +26,19 @@ public class Health : MonoBehaviour
         healthBar.SetHealth(health,maxHealth);
         if (health <= 0.0f) 
         {
+            //destroy the NetworkManager
+            Destroy(GameObject.Find("NetworkManager"));
             StartCoroutine(PlayerUI.Notify("You lost !", 2f));
-            Time.timeScale = 0f;
+            Cursor.lockState = CursorLockMode.None;
+
+            SceneManager.LoadScene("LoginScene");
+
         }
+
+
     }
+
+
 
     public string GetHealth()
     {
