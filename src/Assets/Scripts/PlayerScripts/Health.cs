@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -30,8 +31,24 @@ public class Health : MonoBehaviour
         }
     }
 
-    public string GetHealth()
+    /// <summary>
+    /// Heal le joueur (sauf si c'est points de vie sont au max)
+    /// Retourne true si le joueur est heal, false sinon
+    /// </summary>
+    /// <param name="hp">nombres d'hp a ajouter</param>
+    /// <returns></returns>
+    public bool AddHealth(float hp)
     {
-        return health.ToString();
+        if (Math.Abs(health - maxHealth) < 0.05f)
+        {
+            StartCoroutine(PlayerUI.Notify("Health is at maximum",2f));
+            return false;
+        }
+        if (health + hp > maxHealth)
+            health = maxHealth;
+        else
+            health += hp;
+        healthBar.SetHealth(health,maxHealth);
+        return true;
     }
 }
