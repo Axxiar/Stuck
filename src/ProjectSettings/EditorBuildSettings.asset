@@ -11,7 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/LoginScene.unity
     guid: 3512db056792c4148a1ddcb5293e1944
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/MainScene.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 0
@@ -23,7 +23,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Test Ynou.unity
     guid: daade8c0df4039b4cb5aff82e85d705c
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/MainTemp.unity
     guid: ddf03361e2b6fd1439c5d5c206d2323c
   m_configObjects: {}
