@@ -18,8 +18,6 @@ public class NetworkSetup : NetworkBehaviour
 
     private void Start()
     {
-
-
         // si le joueur n'est pas celui du client,
         // on désactive les scripts de mouvements et autres
         if (!isLocalPlayer)
