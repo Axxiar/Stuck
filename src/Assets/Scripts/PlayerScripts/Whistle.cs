@@ -15,7 +15,7 @@ public class Whistle : MonoBehaviour
     
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.R) && !audioSource.isPlaying && currentWhistleCD <= 0)
+        if (Input.GetKeyDown(KeyCode.X) && !audioSource.isPlaying && currentWhistleCD <= 0)
         {
             int randomIndex = Random.Range(0, whistleClips.Length);
             audioSource.PlayOneShot(whistleClips[randomIndex]);

@@ -31,6 +31,8 @@ public class Lobby : MonoBehaviour
 
     public TMP_InputField playerNameInputField;
 
+    public AudioClip startGameAudioClip;
+    
     private void Awake()
     {
         if (instance != null)
@@ -158,6 +160,7 @@ public class Lobby : MonoBehaviour
     {
         if (hostLobby != null)
         {
+            ManageAudiosOnStart();
             CustomConnects.CreateHost();
         }
         else if (hostLobby == null)
@@ -272,4 +275,18 @@ public class Lobby : MonoBehaviour
         }
     }
     
+    /// <summary>
+    /// Arrête la musique de fond + lance un effect sonore indiquant que la partie se lance
+    /// </summary>
+    private void ManageAudiosOnStart()
+    {
+        GameObject menuGO = GameObject.Find("Menu Music");
+        if (menuGO is not null)
+        {
+            AudioSource menuAS = menuGO.GetComponent<AudioSource>();
+            menuAS.loop = false;
+            menuAS.clip = null;
+            menuAS.PlayOneShot(startGameAudioClip);
+        }
+    }
 }

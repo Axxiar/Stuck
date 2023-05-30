@@ -37,11 +37,11 @@ public class UserAccountManager : MonoBehaviour
 
     public void CreateHost()
     {
+        Debug.Log("1");
         if (!LogIn())
         {
             return;
         }
-        ManageAudiosOnStart();
         NetworkManager.singleton.StartHost();
     }
 

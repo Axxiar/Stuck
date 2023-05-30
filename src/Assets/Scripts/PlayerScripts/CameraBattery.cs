@@ -25,7 +25,7 @@ public class CameraBattery : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.L))
+        if (Input.GetKeyDown(KeyCode.R))
         {
             if (Inventory.BatteriesCount == 0)
                 StartCoroutine(PlayerUI.Notify("You do not have batteries", 2f));

@@ -23,8 +23,8 @@ public class Door : MonoBehaviour {
         RaycastHit hit;
         if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, range) && hit.transform.CompareTag("Doors"))
         {
-            StartCoroutine(PlayerUI.Notify("'H' - Open", .2f));
-            if (Input.GetKeyDown("h"))
+            StartCoroutine(PlayerUI.Notify("'F' - Open", .2f));
+            if (Input.GetKeyDown(KeyCode.F))
             {
                 StartCoroutine(OpenDoor(hit.transform.gameObject));
             }
