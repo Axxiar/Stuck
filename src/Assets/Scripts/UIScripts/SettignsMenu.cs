@@ -25,7 +25,7 @@ public class SettignsMenu : MonoBehaviour
         //read from the file named volume
         StreamReader reader = new StreamReader("volume.txt");
         //get the value of the volume
-        Int32 volume = Int32.Parse(reader.ReadLine());
+        float volume = float.Parse(reader.ReadLine());
         //set the volume
         AudioListener.volume = volume/5;
         Debug.Log(volume);
@@ -90,14 +90,14 @@ public class SettignsMenu : MonoBehaviour
     public void ChangeVolume()
     {
         //get the value of the input field
-        Int32 volume;
+        float volume;
         try
         {
-            volume = Int32.Parse(volumeInputField.GetComponent<TMPro.TMP_InputField>().text);
+            volume = float.Parse(volumeInputField.GetComponent<TMPro.TMP_InputField>().text);
         }
         catch (FormatException e)
         {
-            volume = 0;
+            volume = 0f;
         }
         //set the volume
         AudioListener.volume = volume/5;
