@@ -154,6 +154,18 @@ public class Lobby : MonoBehaviour
         }
     }
 
+    public void startHost()
+    {
+        if (hostLobby != null)
+        {
+            CustomConnects.CreateHost();
+        }
+        else if (hostLobby == null)
+        {
+            CreateLobby(playerNameInputField.text);
+        }
+    }
+
 
     public void ChangeLobbyCodeText()
     {

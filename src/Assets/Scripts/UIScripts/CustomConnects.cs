@@ -5,7 +5,7 @@ using Mirror;
 public class CustomConnects : MonoBehaviour
 {
 
-    public void CreateHost()
+    public static void CreateHost()
     {
         NetworkManager.singleton.StartHost();
     }
@@ -14,7 +14,7 @@ public class CustomConnects : MonoBehaviour
     public void ConnectToIp()
     {
         
-        NetworkManager.singleton.networkAddress = GameObject.Find("AddresseIP").GetComponent<TMPro.TMP_InputField>().text;
+        NetworkManager.singleton.networkAddress = "127.0.0.1";
         Debug.Log("Connecting to " + NetworkManager.singleton.networkAddress);
         NetworkManager.singleton.StartClient();
     }
