@@ -155,7 +155,6 @@ GameObject:
   - component: {fileID: 2426522828825295725}
   - component: {fileID: 3386679792516339763}
   - component: {fileID: 1739507926104527756}
-  - component: {fileID: 1146313672461910930}
   m_Layer: 2
   m_Name: Player Test
   m_TagString: Player
@@ -333,7 +332,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   range: 3.5
-  isOpening: 0
   fpsCam: {fileID: 960091783057153970}
   playerAS: {fileID: 6354087685360415769}
   doorOpenAudioClips:
@@ -528,18 +526,6 @@ MonoBehaviour:
   syncInterval: 0.1
   clientAuthority: 1
   animator: {fileID: 2668705971905853123}
---- !u!114 &1146313672461910930
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 960091783704507620}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f8a0a773265c1bb419ab7080852da49a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1542695744618724238
 GameObject:
   m_ObjectHideFlags: 0
