@@ -90,7 +90,15 @@ public class SettignsMenu : MonoBehaviour
     public void ChangeVolume()
     {
         //get the value of the input field
-        Int32 volume = Int32.Parse(volumeInputField.GetComponent<TMPro.TMP_InputField>().text);
+        Int32 volume;
+        try
+        {
+            volume = Int32.Parse(volumeInputField.GetComponent<TMPro.TMP_InputField>().text);
+        }
+        catch (FormatException e)
+        {
+            volume = 0;
+        }
         //set the volume
         AudioListener.volume = volume/5;
 
@@ -109,14 +117,12 @@ public class SettignsMenu : MonoBehaviour
         //get the value of the input field
         Int32 sensitivity = Int32.Parse(sensitivityInputField.GetComponent<TMPro.TMP_InputField>().text);
         //set the sensitivity with the mouseSensitivityX parameter of the MouseLook script
-        GameObject.Find("Player").GetComponent<MouseLook>().mouseXSensivity = sensitivity;
-        GameObject.Find("Player").GetComponent<MouseLook>().mouseYSensivity = sensitivity;
         //change the text of the sensitivity text to the sensitivity
         sensitivityText.GetComponent<TMPro.TMP_Text>().text = sensitivity.ToString();
         //write the sensitivity in the file named sensitivity
-        StreamWriter writer = new StreamWriter("sensitivity.txt");
-        writer.WriteLine(sensitivity);
+        StreamWriter writer2 = new StreamWriter("sensitivity.txt");
+        writer2.WriteLine(sensitivity);
         //delete the writer
-        writer.Close();
+        writer2.Close();
     }
 }
