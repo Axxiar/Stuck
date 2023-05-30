@@ -52,7 +52,15 @@ public class Lobby : MonoBehaviour
         {
             Debug.Log("Signed In " + AuthenticationService.Instance.PlayerId);
         };
-        await AuthenticationService.Instance.SignInAnonymouslyAsync();
+        if (!AuthenticationService.Instance.IsSignedIn)
+        {
+            await AuthenticationService.Instance.SignInAnonymouslyAsync();
+        }
+        else
+        {
+            Debug.Log("Already Signed In " + AuthenticationService.Instance.PlayerId);
+        }
+
 
     }
 
