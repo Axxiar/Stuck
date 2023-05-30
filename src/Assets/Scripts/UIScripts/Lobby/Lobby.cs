@@ -1,3 +1,4 @@
+using Mirror;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -165,7 +166,9 @@ public class Lobby : MonoBehaviour
         }
         else if (hostLobby == null)
         {
-            CreateLobby(playerNameInputField.text);
+            NetworkManager.singleton.networkAddress = "127.0.0.1";
+            Debug.Log("Connecting to " + NetworkManager.singleton.networkAddress);
+            NetworkManager.singleton.StartClient();
         }
     }
 

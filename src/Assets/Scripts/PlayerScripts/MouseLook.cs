@@ -33,31 +33,12 @@ public class MouseLook : MonoBehaviour
         // On bloque le curseur (+rend invisible au passage)
         Cursor.lockState = CursorLockMode.Locked;
 
-        if (!PlayerUI.GameIsPaused)
-        {
-            //read from the file named sensitivity
-            StreamReader reader2 = new StreamReader("sensitivity.txt");
-            //get the value of the sensitivity
-            float sensitivity = float.Parse(reader2.ReadLine());
 
-            mouseYSensivity = sensitivity;
-            // Sensibilité horizontale de la souris
-            mouseXSensivity = sensitivity * 0.8f;
-        }
     }
 
     void Update()
     {
-        if (!PlayerUI.GameIsPaused) {
-            //read from the file named sensitivity
-            StreamReader reader2 = new StreamReader("sensitivity.txt");
-            //get the value of the sensitivity
-            float sensitivity = float.Parse(reader2.ReadLine());
 
-            mouseYSensivity = sensitivity;
-            // Sensibilité horizontale de la souris
-            mouseXSensivity = sensitivity * 0.8f;
-        }
 
 
         
