@@ -11,14 +11,32 @@ using UnityEngine.UI;
 
 public class Lobby : MonoBehaviour
 {
+    public static Lobby instance;
 
-
-    private Unity.Services.Lobbies.Models.Lobby hostLobby;
-    private Unity.Services.Lobbies.Models.Lobby joinedLobby;
+    public Unity.Services.Lobbies.Models.Lobby hostLobby;
+    public Unity.Services.Lobbies.Models.Lobby joinedLobby;
+    public int currentLobbyPlayerCount;
+    public int joinedlobbyplayercount;
     private float heartBeatTimer;
+
+    [SerializeField] private GameObject lobbyCodeText;
+    [SerializeField] private GameObject Player1;
+    [SerializeField] private GameObject Player2;
+    [SerializeField] private GameObject Player3;
+    [SerializeField] private GameObject Player4;
+
 
     public TMP_InputField playerNameInputField;
 
+    private void Awake()
+    {
+        if (instance != null)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        instance = this;
+    }
 
     private async void Start()
     {
@@ -30,15 +48,63 @@ public class Lobby : MonoBehaviour
         };
         await AuthenticationService.Instance.SignInAnonymouslyAsync();
 
-        CreateLobby("f");
-        ListLobbies();
     }
 
     private void Update()
     {
         HandleLobbyHeartBeat();
         HandleLobbyPollUpdate();
+        updatePlayers();
+        //unlock cursor
+        Cursor.lockState = CursorLockMode.None;
+    }
 
+    private void updatePlayers()
+    {
+        //debug log the current lobby player count
+        Debug.Log("current lobby player count: " + currentLobbyPlayerCount);
+        //debug log the joined lobby player count
+        Debug.Log("joined lobby player count: " + joinedlobbyplayercount);
+
+        //get the current player count and set active the corresponding players
+        if (currentLobbyPlayerCount == 1 || joinedlobbyplayercount == 1)
+        {
+            Player1.SetActive(true);
+            Player2.SetActive(false);
+            Player3.SetActive(false);
+            Player4.SetActive(false);
+        }
+        else if (currentLobbyPlayerCount == 2 || joinedlobbyplayercount == 2)
+        {
+            Player1.SetActive(true);
+            Player2.SetActive(true);
+            Player3.SetActive(false);
+            Player4.SetActive(false);
+        }
+        else if (currentLobbyPlayerCount == 3 || joinedlobbyplayercount == 3)
+        {
+            Player1.SetActive(true);
+            Player2.SetActive(true);
+            Player3.SetActive(true);
+            Player4.SetActive(false);
+        }
+        else if (currentLobbyPlayerCount == 4 || joinedlobbyplayercount == 4)
+        {
+            Player1.SetActive(true);
+            Player2.SetActive(true);
+            Player3.SetActive(true);
+            Player4.SetActive(true);
+        }
+        else
+        {
+            Player1.SetActive(false);
+            Player2.SetActive(false);
+            Player3.SetActive(false);
+            Player4.SetActive(false);
+        }
+
+        //get the joined player count and set active the corresponding players
+        
     }
 
     private async void HandleLobbyHeartBeat()
@@ -73,13 +139,34 @@ public class Lobby : MonoBehaviour
             return;
         }
 
-        float heartBeatTimerMax = 2;
+        float heartBeatTimerMax = 1.1f;
         heartBeatTimer = heartBeatTimerMax;
 
-        Unity.Services.Lobbies.Models.Lobby lobby = await LobbyService.Instance.GetLobbyAsync(hostLobby.Id);
-        joinedLobby = lobby;
+        try
+        {
+            if (hostLobby != null)
+            {
+                hostLobby = await LobbyService.Instance.GetLobbyAsync(hostLobby.Id);
+                currentLobbyPlayerCount = hostLobby.Players.Count;
+            }
+            if (joinedLobby != null)
+            {
+                joinedLobby = await LobbyService.Instance.GetLobbyAsync(joinedLobby.Id);
+                joinedlobbyplayercount = joinedLobby.Players.Count; ;
+            }
+        }
+        catch (LobbyServiceException e)
+        {
+            Debug.Log(e);
+        }
     }
-    
+
+
+    public void ChangeLobbyCodeText()
+    {
+
+        lobbyCodeText.GetComponent<TMPro.TextMeshProUGUI>().text = hostLobby.LobbyCode;
+    }
 
     public async void CreateLobby(string lobbyName)
     {
@@ -94,6 +181,9 @@ public class Lobby : MonoBehaviour
 
             hostLobby = lobby;
 
+            ChangeLobbyCodeText();
+
+            
         } catch (LobbyServiceException e)
         {
             Debug.Log(e);
@@ -101,6 +191,7 @@ public class Lobby : MonoBehaviour
         
 
     }
+
 
 
 
@@ -130,13 +221,16 @@ public class Lobby : MonoBehaviour
         }
     }
 
-    private async void JoinLobbyByCode(string lobbyCode)
+    public async void JoinLobbyByCode(TMP_InputField lobbyCode)
     {
        try
        {
-            joinedLobby = await Lobbies.Instance.JoinLobbyByCodeAsync(lobbyCode);
+            joinedLobby = await Lobbies.Instance.JoinLobbyByCodeAsync(lobbyCode.text);
 
-       } catch (LobbyServiceException e)
+            lobbyCodeText.GetComponent<TMPro.TextMeshProUGUI>().text = joinedLobby.LobbyCode;
+
+        }
+        catch (LobbyServiceException e)
        {
             Debug.Log(e);
        }
@@ -154,11 +248,15 @@ public class Lobby : MonoBehaviour
         }
     }
 
-    private async void LeaveLobby()
+    public async void LeaveLobby()
     {
         try
         {
             await LobbyService.Instance.RemovePlayerAsync(joinedLobby.Id, AuthenticationService.Instance.PlayerId);
+            await LobbyService.Instance.RemovePlayerAsync(hostLobby.Id, AuthenticationService.Instance.PlayerId);
+            hostLobby = null;
+            joinedLobby = null;
+            
         } catch (LobbyServiceException e)
         {
             Debug.Log(e);
