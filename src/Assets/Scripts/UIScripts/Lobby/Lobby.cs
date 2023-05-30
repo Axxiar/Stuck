@@ -139,7 +139,7 @@ public class Lobby : MonoBehaviour
             return;
         }
 
-        float heartBeatTimerMax = 1.1f;
+        float heartBeatTimerMax = 3f;
         heartBeatTimer = heartBeatTimerMax;
 
 
