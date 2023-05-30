@@ -26,6 +26,8 @@ public class PlayerUI : NetworkBehaviour
     public CamBatteryBar batterySlider;
     public Sprite batterySprite;
     public List<GameObject> items;
+
+    [SerializeField] private GameObject settingsMenu;
     private void Start()
     {
         networkManager = NetworkManager.singleton;

@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 
 using UnityEngine;
 
@@ -7,9 +8,14 @@ public class MouseLook : MonoBehaviour
     // Propriété transform du joueur dont c'est la caméra
     public Transform playerBody;
     // Sensibilité verticale de la souris
-    public float mouseYSensivity = 100.0f;
+    //read from the file named sensitivity
+    static StreamReader reader2 = new StreamReader("sensitivity.txt");
+    //get the value of the sensitivity
+    static float sensitivity = float.Parse(reader2.ReadLine());
+
+    public float mouseYSensivity = sensitivity;
     // Sensibilité horizontale de la souris
-    public float mouseXSensivity = 70.0f;
+    public float mouseXSensivity = sensitivity*0.8f;
     // 
     [Range(0.0f, 0.1f)] public float mouseSmoothness;
 
