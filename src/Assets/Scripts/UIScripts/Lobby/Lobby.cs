@@ -48,6 +48,8 @@ public class Lobby : MonoBehaviour
     {
         await UnityServices.InitializeAsync();
 
+        //unlock cursor
+        Cursor.lockState = CursorLockMode.None;
         AuthenticationService.Instance.SignedIn += () =>
         {
             Debug.Log("Signed In " + AuthenticationService.Instance.PlayerId);
@@ -69,8 +71,6 @@ public class Lobby : MonoBehaviour
         HandleLobbyHeartBeat();
         HandleLobbyPollUpdate();
         updatePlayers();
-        //unlock cursor
-        Cursor.lockState = CursorLockMode.None;
     }
 
     private void updatePlayers()
@@ -169,6 +169,7 @@ public class Lobby : MonoBehaviour
     {
         ManageAudiosOnStart();
         Time.timeScale = 1f;
+        Cursor.lockState = CursorLockMode.Locked;
         if (hostLobby != null)
         {
             CustomConnects.CreateHost();

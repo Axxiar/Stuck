@@ -26,11 +26,9 @@ public class Gaz : MonoBehaviour
                 other.GetComponent<Health>().TakeDamage(damage);
                 other.GetComponent<AudioSource>().PlayOneShot(coughAudioClips[Random.Range(0,coughAudioClips.Length)]);
                 currentCD = damageCoolDown;
-                Debug.Log("Tu prend des degats");
             }
             else
             {
-                Debug.Log(currentCD);
                 currentCD -= Time.deltaTime; 
             }
         }

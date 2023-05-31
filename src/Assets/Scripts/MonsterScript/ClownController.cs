@@ -46,7 +46,7 @@ public class ClownController : MonoBehaviour
     private float timeLostTarget = 0;
     private Rigidbody rb;
     private float stuckIteration = 0;
-
+    private bool isPlayingAttackClip = false;
     private void Start()
     {
         monsterAS = GetComponent<AudioSource>();
@@ -171,9 +171,19 @@ public class ClownController : MonoBehaviour
         ResetAnimation();
         currentAction = attack_state;
         _animator.SetBool(attack_state, true);
-        monsterAS.PlayOneShot(attackAudioClips[Random.Range(0,attackAudioClips.Length)]);
+        StartCoroutine(PlayAttackClip());
     }
 
+    private IEnumerator PlayAttackClip()
+    {
+        if (!isPlayingAttackClip)
+        {
+            isPlayingAttackClip = true;
+            monsterAS.PlayOneShot(attackAudioClips[Random.Range(0,attackAudioClips.Length)]);
+            yield return new WaitForSeconds(1.70f);
+            isPlayingAttackClip = false;
+        }
+    }
     public void Run()
     {
         ResetAnimation();
