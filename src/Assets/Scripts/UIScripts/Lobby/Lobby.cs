@@ -171,12 +171,14 @@ public class Lobby : MonoBehaviour
         {
             ManageAudiosOnStart();
             CustomConnects.CreateHost();
+            Time.timeScale = 1f;
         }
         else if (hostLobby == null)
         {
             NetworkManager.singleton.networkAddress = "127.0.0.1";
             Debug.Log("Connecting to " + NetworkManager.singleton.networkAddress);
             NetworkManager.singleton.StartClient();
+            Time.timeScale = 1f;
         }
     }
 
