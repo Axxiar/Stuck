@@ -135,8 +135,14 @@ footer .link-to-about:hover::after {
   width: 100%;
 }
 
+.welcome-h1 {
+  text-align: center;
+  padding: 20vh 0 5px 0;
+}
+
 article {
-  padding: calc(5vw + 10px);
+  font-size: 20px;
+  padding: 10px calc(25vw + 10px) 5vh calc(20vw + 10px);
 }
 
 section .container {

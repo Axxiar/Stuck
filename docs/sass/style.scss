@@ -65,8 +65,14 @@ $mobile-width: 590px; // taille pour les changements responsive
 
 // -- index.html -- 
 
+.welcome-h1 {
+    text-align: center;
+    padding: 20vh 0 5px 0;
+}
+
 article {
-    padding: calc(5vw + 10px);
+    font-size: 20px;
+    padding: 10px calc(25vw + 10px) 5vh calc(20vw + 10px);
 }
 
 
