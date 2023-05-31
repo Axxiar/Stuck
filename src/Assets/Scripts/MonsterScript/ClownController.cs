@@ -10,7 +10,7 @@ public class ClownController : MonoBehaviour
     private float speed ;
     public float runspeed = 10f;
     public float walkspeed = 5f;
-    public float minDistance = 2.0f;
+    public AudioClip[] attackAudioClips;
     private const string walk_state = "Walk";
     private const string run_state = "Run";
     private const string attack_state = "Attack";
@@ -18,6 +18,8 @@ public class ClownController : MonoBehaviour
     private GameObject[] targetsPlayers;
     //private bool istargetfound = false;
 
+    private AudioSource monsterAS;
+    
     //Agent de Navigation
     public NavMeshAgent navMeshAgent;
 
@@ -46,7 +48,8 @@ public class ClownController : MonoBehaviour
     private float stuckIteration = 0;
 
     private void Start()
-    { 
+    {
+        monsterAS = GetComponent<AudioSource>();
         currentAction = walk_state;
         speed = walkspeed;
         _animator = GetComponent<Animator>();
@@ -86,7 +89,6 @@ public class ClownController : MonoBehaviour
                 float distance = Vector3.Distance(transform.position, currentTarget.transform.position);
                 if (distance <= navMeshAgent.stoppingDistance)
                 {
-                    Debug.Log(currentTarget.gameObject.name + " est attaqué !");
                     Attack();
                 }
                 else
@@ -120,7 +122,6 @@ public class ClownController : MonoBehaviour
     {
         if (collisionInfo.gameObject.CompareTag("Stairs"))
         {
-            Debug.Log("J'suis sur les esca");
             GetComponent<Rigidbody>().isKinematic = true;
         }
         else if (collisionInfo.gameObject.CompareTag("Doors"))
@@ -170,7 +171,7 @@ public class ClownController : MonoBehaviour
         ResetAnimation();
         currentAction = attack_state;
         _animator.SetBool(attack_state, true);
-       
+        monsterAS.PlayOneShot(attackAudioClips[Random.Range(0,attackAudioClips.Length)]);
     }
 
     public void Run()
@@ -251,10 +252,10 @@ public class ClownController : MonoBehaviour
         transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 3f);
     }
 
-    private bool RandomPoint(Vector3 center, float range, out Vector3 result)
+    private bool RandomPoint(Vector3 center, float _range, out Vector3 result)
     {
 
-        Vector3 randomPoint = center + Random.insideUnitSphere * range; //random point in a sphere 
+        Vector3 randomPoint = center + Random.insideUnitSphere * _range; //random point in a sphere 
         NavMeshHit hit;
         if (NavMesh.SamplePosition(randomPoint, out hit, 1.0f,
                 NavMesh.AllAreas)) //documentation: https://docs.unity3d.com/ScriptReference/AI.NavMesh.SamplePosition.html
