@@ -121,7 +121,6 @@ public class SettignsMenu : MonoBehaviour
         sensitivityText.GetComponent<TMPro.TMP_Text>().text = sensitivity.ToString();
         //write the sensitivity in the file named sensitivity
         StreamWriter writer2 = new StreamWriter("sensitivity.txt");
-        writer2.WriteLine(sensitivity);
         //delete the writer
         writer2.Close();
     }

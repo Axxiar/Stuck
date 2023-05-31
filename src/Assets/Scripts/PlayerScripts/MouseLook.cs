@@ -11,7 +11,7 @@ public class MouseLook : MonoBehaviour
     //read from the file named sensitivity
     static StreamReader reader2 = new StreamReader("sensitivity.txt");
     //get the value of the sensitivity
-    static float sensitivity = 1;//float.Parse(reader2.ReadLine());
+    static float sensitivity = 100;//float.Parse(reader2.ReadLine());
 
     public float mouseYSensivity = sensitivity;
     // Sensibilité horizontale de la souris
