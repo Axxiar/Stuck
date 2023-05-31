@@ -1,5 +1,4 @@
 using System;
-using System.IO;
 
 using UnityEngine;
 
@@ -8,14 +7,9 @@ public class MouseLook : MonoBehaviour
     // Propriété transform du joueur dont c'est la caméra
     public Transform playerBody;
     // Sensibilité verticale de la souris
-    //read from the file named sensitivity
-    static StreamReader reader2 = new StreamReader("sensitivity.txt");
-    //get the value of the sensitivity
-    static float sensitivity = 100f;//float.Parse(reader2.ReadLine());
-
-    public float mouseYSensivity = sensitivity;
+    public float mouseYSensivity = 100.0f;
     // Sensibilité horizontale de la souris
-    public float mouseXSensivity = sensitivity * 0.8f;
+    public float mouseXSensivity = 70.0f;
     // 
     [Range(0.0f, 0.1f)] public float mouseSmoothness;
 
@@ -32,22 +26,15 @@ public class MouseLook : MonoBehaviour
     {
         // On bloque le curseur (+rend invisible au passage)
         Cursor.lockState = CursorLockMode.Locked;
-
-
     }
 
     void Update()
     {
-
-
-
-        
         // pour éviter que la souris continue à bouger toute seule quand on ouvre un menu
         if (PlayerUI.GameIsPaused)
         {
             playerBody.Rotate(Vector3.zero);
             return;
-            
         }
         // Récup de la position de la souris
         Vector2 targetMouseDelta = new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
