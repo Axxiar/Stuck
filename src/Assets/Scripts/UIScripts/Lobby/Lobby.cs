@@ -167,9 +167,10 @@ public class Lobby : MonoBehaviour
 
     public void startHost()
     {
+        ManageAudiosOnStart();
+        Time.timeScale = 1f;
         if (hostLobby != null)
         {
-            ManageAudiosOnStart();
             CustomConnects.CreateHost();
         }
         else if (hostLobby == null)
