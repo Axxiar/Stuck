@@ -265,21 +265,18 @@ section {
     h3 {
         padding-bottom: 20px;
     }
-    button {
-        cursor: pointer;
-        padding: 5px;
-        border-radius: 5px;
-        background-color: #4a0000;
-    }
     .guide-card {
-        @include card;
+        display: flex;
+        justify-content: center;
+        align-items: center;
         margin: 0 auto;
+        width: fit-content;
+        height: fit-content;
         background-color: #ff1e2264;
-        width: 50%;
-        height: 80vh;
         text-align: left;
+        border-radius: 10px;
         code {
-            padding: 10px;
+            padding: calc(2vw + 5px);
         }
     }
 }
@@ -375,7 +372,12 @@ section {
 
 // -- resources.html --
 
-.resources-content {
+.resources-content {  
+
+    details[open] > ul {
+        opacity: 1;
+    }
+
     details {
         margin-top: 5vh;
         margin-left: calc(15px + 5vw);
@@ -383,9 +385,15 @@ section {
     }
 
     summary {
+        cursor: pointer;
         font-family: 'Segoe UI', Tahoma, Verdana, sans-serif;
         font-size: 30px;
         font-weight: bold;
+    }
+
+    ul {
+        opacity: 0;
+        transition: opacity .5s;
     }
 
     li {
@@ -396,5 +404,17 @@ section {
     a {
         font-size: 20px;
         @include link-animation;
+    }
+}
+
+.closed {
+    summary::-webkit-details-marker, summary::marker {
+        content: "+ ";
+    }
+}
+
+.opened {
+    summary::-webkit-details-marker, summary::marker {
+        content: "- ";
     }
 }
