@@ -136,15 +136,68 @@ footer .link-to-about:hover::after {
 }
 
 .welcome-h1 {
+  font-size: calc(1.5vw + 10px);
   text-align: center;
-  padding: 20vh 0 5px 0;
+  padding: 12vh 10px 10px 10px;
+}
+
+.intro {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: calc(7vh + 5px) 0 5vh 0;
+  padding: 0 15% 0 15%;
 }
 
 article {
-  font-size: 20px;
-  padding: 10px calc(25vw + 10px) 5vh calc(20vw + 10px);
+  font-size: calc(0.7vw + 10px);
+}
+article a {
+  cursor: pointer;
+  text-decoration: none;
+  position: relative;
+}
+article a::after {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 0%;
+  height: 1px;
+  left: 0px;
+  background-color: white;
+  transition: width 0.3s;
+}
+article a:hover::after {
+  width: 100%;
+}
+article a.link-to-dl {
+  font-weight: bold;
+  color: hsl(0, 100%, 40%);
+  text-decoration: none;
+  position: relative;
+}
+article a.link-to-dl::after {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  left: -1px;
+  background-color: hsl(0, 100%, 40%);
+  transition: width 0.3s;
+}
+article a.link-to-dl:hover::after {
+  width: 100%;
+}
+article h3 {
+  padding-top: 10%;
 }
 
+section h3 {
+  padding-top: 15%;
+  font-size: calc(1vw + 10px);
+  text-align: center;
+}
 section .container {
   max-width: 650px;
   margin: 0 auto;
@@ -223,7 +276,6 @@ section .container {
   height: 100%;
   overflow: hidden;
   transition: all 300ms ease-out;
-  vertical-align: top;
   box-sizing: border-box;
   white-space: normal;
 }
@@ -239,7 +291,7 @@ section .container {
   display: block;
   content: "";
   width: 100%;
-  padding-top: 80%;
+  padding-top: 66.6666666667%;
 }
 .carousel__slide div > img {
   position: absolute;
@@ -313,11 +365,7 @@ section .container {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: url("/assets/bgstuck.jpg");
-  width: 80%;
-  max-width: 600px;
-  height: 500px;
-  margin: 50px auto;
+  margin: 30vh auto;
 }
 
 .dl-button {
@@ -358,6 +406,59 @@ section .container {
 .dl-button img {
   width: 30px;
   height: 30px;
+}
+
+#guide-du-jeu {
+  text-align: center;
+  font-size: calc(0.7vw + 10px);
+}
+#guide-du-jeu h3 {
+  padding-bottom: 20px;
+}
+#guide-du-jeu button {
+  cursor: pointer;
+  padding: 5px;
+  border-radius: 5px;
+  background-color: #4a0000;
+}
+#guide-du-jeu .guide-card {
+  padding: 20px;
+  height: 300px;
+  max-width: 450px;
+  min-width: 300px;
+  background-color: rgba(0, 0, 0, 0.3921568627);
+  border-radius: 10px;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  margin: 0 auto;
+  background-color: rgba(255, 30, 34, 0.3921568627);
+  width: 50%;
+  height: 80vh;
+  text-align: left;
+}
+#guide-du-jeu .guide-card .profil {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+#guide-du-jeu .guide-card img {
+  padding-bottom: 5px;
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+}
+@media screen and (max-width: 900px) {
+  #guide-du-jeu .guide-card img {
+    width: 70px;
+    height: 70px;
+  }
+}
+#guide-du-jeu .guide-card code {
+  padding: 10px;
 }
 
 .card-grid {
@@ -426,9 +527,9 @@ section .container {
 }
 .techs .icons {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   grid-gap: 10px 10px;
-  margin: 50px;
+  margin: 7vh 9vw;
 }
 .techs .icons .item, .techs .icons .git-item, .techs .icons .web-item {
   background-color: rgba(255, 30, 34, 0.3921568627);
@@ -456,6 +557,11 @@ section .container {
 .techs .icons .web-item svg {
   height: 35%;
   width: 35%;
+}
+@media screen and (min-width: 1320px) {
+  .techs .icons {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
 .resources-content details {

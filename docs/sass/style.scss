@@ -34,26 +34,7 @@ html {
 }
 
 
-@mixin aspect-ratio($width, $height) {
-    position: relative;
-    
-    &:before {
-        display: block;
-        content: "";
-        width: 100%;
-        padding-top: ($height / $width) * 100%;
-    }
-    
-    > img {
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        width: 100%;
-        height: 100%;
-    }
-}
+
 
 
 $main-color: #4a0000;
@@ -66,17 +47,45 @@ $mobile-width: 590px; // taille pour les changements responsive
 // -- index.html -- 
 
 .welcome-h1 {
+    font-size: calc(1.5vw + 10px);
     text-align: center;
-    padding: 20vh 0 5px 0;
+    padding: 12vh 10px 10px 10px;
+}
+
+.intro {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: calc(7vh + 5px) 0 5vh 0;
+    padding: 0 15% 0 15%;
 }
 
 article {
-    font-size: 20px;
-    padding: 10px calc(25vw + 10px) 5vh calc(20vw + 10px);
+    font-size: calc(.7vw + 10px);
+    a {
+        cursor: pointer;
+        @include link-animation();
+    
+    }
+    a.link-to-dl {
+        font-weight: bold;
+        color: hsl(0, 100%, 40%);
+        @include link-animation(-1px, hsl(0, 100%, 40%), 2px);
+    }
+    
+    h3 {
+        padding-top: 10%;
+    }
 }
 
 
 section {
+
+    h3 {
+        padding-top: 15%;
+        font-size: calc(1vw + 10px);
+        text-align: center;
+    }
     .container {
         max-width: 650px;
         margin: 0 auto;
@@ -169,7 +178,6 @@ section {
     height: 100%;
     overflow: hidden;
     transition: all 300ms ease-out;
-    vertical-align: top;
     box-sizing: border-box;
     white-space: normal;
 
@@ -179,7 +187,7 @@ section {
     }
 
     div {
-        @include aspect-ratio(5, 4);
+        @include aspect-ratio(6,4);
         width: 100%;
     }
 
@@ -244,15 +252,36 @@ section {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background: url("/assets/bgstuck.jpg");
-    width: 80%;
-    max-width: 600px;
-    height: 500px;
-    margin: 50px auto;
+    margin: 30vh auto;
 }
 
 .dl-button {
     @include big-button;
+}
+
+#guide-du-jeu {
+    text-align: center;
+    font-size: calc(.7vw + 10px);
+    h3 {
+        padding-bottom: 20px;
+    }
+    button {
+        cursor: pointer;
+        padding: 5px;
+        border-radius: 5px;
+        background-color: #4a0000;
+    }
+    .guide-card {
+        @include card;
+        margin: 0 auto;
+        background-color: #ff1e2264;
+        width: 50%;
+        height: 80vh;
+        text-align: left;
+        code {
+            padding: 10px;
+        }
+    }
 }
 
 
@@ -282,6 +311,7 @@ section {
     }
 }
 
+
 .members {
     margin: 5% 0 10% 0;
     text-align: center;
@@ -297,10 +327,10 @@ section {
     
     .icons {
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(2, 1fr);
         grid-gap: 10px 10px;
         
-        margin: 50px;
+        margin: 7vh 9vw;
     
         .item, .git-item, .web-item {
             background-color: #ff1e2264;
@@ -335,6 +365,10 @@ section {
                 height: 35%;
                 width: 35%;
             }
+        }
+
+        @media screen and (min-width: 1320px) {
+            grid-template-columns: repeat(3, 1fr);
         }
     }
 }
